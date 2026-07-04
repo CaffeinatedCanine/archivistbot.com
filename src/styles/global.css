@@ -1,17 +1,241 @@
-@layer base, starlight, theme, components, utilities;
+@layer base, starlight, theme, components, utilities, overrides;
 
-@import '@astrojs/starlight-tailwind';
-@import 'tailwindcss/theme.css' layer(theme);
-@import 'tailwindcss/utilities.css' layer(utilities);
-
+@import "tailwindcss";
+@import "@astrojs/starlight-tailwind";
+@import "./asides.css" layer(theme);
+@import "./badges.css" layer(theme);
+@import "tailwindcss/theme.css" layer(theme);
+@import "./linkbuttons.css" layer(theme);
+@import "./cards.css" layer(theme);
+@import "./code.css" layer(theme);
+@import "./filetree.css" layer(theme);
+@import "./steps.css" layer(theme);
+@import "./tabs.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "starlight-theme-nova/tailwind.css";
+@import "@fontsource-variable/atkinson-hyperlegible-next";
+@import "@fontsource-variable/comfortaa";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
 @theme {
-	/*
-	Configure your Tailwind theme that will be used by Starlight.
-	https://starlight.astro.build/guides/css-and-tailwind/#styling-starlight-with-tailwind
-	*/
+  --font-sans: "Atkinson Hyperlegible Next", sans;
+  --font-mono: "Jetbrains Mono", mono;
+  --font-title: "Comfortaa", sans;
+  --font-heading: "Space Grotesk", sans;
+  --color-AO3-black: #15090c;
+  --color-AO3-wine: #240d13;
+	--color-AO3-danger: #ef4444;
+  --color-AO3-dark-card: #341520;
+  --color-AO3-dark-maroon: #6e2334;
+  --color-AO3-maroon: #5c2230;
+  --color-AO3-muted-light-text: #8b5a68;
+  --color-AO3-muted-dark-text: #b58e96;
+  --color-AO3-light-card: #e3cdc9;
+  --color-AO3-silver: #f2e6e2;
+  --color-AO3-gray: #efe1de;
+  --color-AO3-white: #faf3f0;
+  --color-AO3-magenta: #e94f8a;
+  --color-AO3-dusk: #ad2f5c;
+  --color-AO3-rose: #c2607f;
+  --color-AO3-cyan: #3ddbd9;
+  --color-AO3-teal: #1a8c8b;
+  --color-Archie-green: #5fdc6a;
+  --color-Archie-amber: #ffb627;
+  --color-Archie-screen: #1c1614;
+  --shadow-glow-magenta:
+    0 0 8px rgba(233, 79, 138, 0.4), 0 0 20px rgba(233, 79, 138, 0.2);
+  --shadow-glow-magenta-strong:
+    0 0 12px rgba(233, 79, 138, 0.6), 0 0 28px rgba(233, 79, 138, 0.3);
 }
 
-/*
-Add additional Tailwind styles to this file:
-https://tailwindcss.com/docs/adding-custom-styles#using-custom-css
-*/
+:root {
+  --sl-text-code-sm: 1rem;
+  --sl-text-base: 1.1rem;
+  --sl-color-bg: var(--color-AO3-black);
+  --sl-color-text: var(--color-AO3-silver);
+  --sl-color-black: var(--color-AO3-wine);
+  --sl-color-bg-nav: var(--color-AO3-maroon);
+}
+:root[data-theme="light"] {
+  --sl-color-bg: var(--color-AO3-white);
+  --sl-color-text: var(--color-AO3-dark-maroon);
+  --sl-color-black: var(--color-AO3-gray);
+  --sl-color-bg-nav: var(--color-AO3-silver);
+}
+
+@utility shadow-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+@utility shadow-card-dark {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@utility shadow-card-hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+@utility shadow-card-hover-light {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ANNIHILATE ALL BORDERS */
+header,
+.content-panel,
+.right-sidebar,
+.starlight__sidebar,
+site-search button {
+  @apply border-0 border-s-0;
+}
+
+/* BASE TEXT STYLES */
+/* TODO: Style blockquote. */
+p,
+li {
+  @apply text-lg;
+}
+
+em,
+i {
+  @apply italic text-AO3-teal dark:text-AO3-cyan;
+}
+
+strong,
+b {
+  @apply font-semibold text-AO3-magenta;
+}
+
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading;
+}
+
+h1,
+h2 {
+  @apply font-bold text-(--sl-color-text);
+}
+
+h3,
+h4,
+h5 {
+  @apply font-medium;
+}
+
+/* Lists */
+.content-panel ul li:not(> starlight-file-tree),
+.content-panel ul ul li:not(> starlight-file-tree) {
+  @apply list-none! pl-4;
+}
+
+.content-panel ul li:not(> starlight-file-tree) {
+  @apply relative pl-[1.1em] mb-1;
+}
+
+.content-panel ul li::before:not(> starlight-file-tree) {
+  content: "›";
+  @apply absolute left-0 text-[1.1em] leading-none font-semibold text-AO3-magenta;
+}
+
+.content-panel ul ul li::before:not(> starlight-file-tree) {
+  @apply text-AO3-teal dark:text-AO3-cyan;
+}
+
+.sl-markdown-content ol:not(.sl-steps) li {
+  @apply list-none! pl-0;
+}
+
+.sl-markdown-content ol:not(.sl-steps) li {
+  counter-increment: ol-counter;
+  @apply relative pl-8 mb-[5px];
+}
+
+.sl-markdown-content ol:not(.sl-steps) li::before {
+  content: counter(ol-counter);
+  @apply absolute left-0 font-mono font-medium text-[0.82em] text-AO3-magenta top-[0.35em] min-w-[1.4em] text-right;
+}
+
+/* LINK STYLES */
+a {
+  @apply text-AO3-magenta hover:text-AO3-dusk;
+}
+
+details ul li a {
+  @apply hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full;
+}
+
+[aria-current="page"] {
+  @apply bg-AO3-magenta! text-AO3-gray! dark:text-AO3-wine! rounded-full;
+}
+
+details ul li:not(.file, .directory) {
+  @apply border-s-2 border-s-AO3-muted-dark-text dark:border-s-AO3-maroon;
+}
+
+/* HEADER STYLES */
+header {
+  @apply bg-(--sl-color-bg-nav)/50 text-(--sl-color-text) backdrop-blur-3xl;
+}
+
+site-search button {
+  @apply rounded-full bg-(--sl-color-bg) hover:bg-AO3-muted-dark-text dark:hover:bg-AO3-muted-light-text;
+}
+
+kbd {
+  @apply bg-transparent;
+}
+
+/* TABLE OF CONTENTS */
+.starlight-toc {
+  @apply mr-4 mt-4;
+}
+
+.right-sidebar-panel h2 {
+  @apply text-AO3-magenta text-xl font-normal;
+}
+
+.right-sidebar-panel a {
+  @apply text-(--sl-color-text) hover:text-(--sl-color-text) text-base! hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full w-3/4 pl-3;
+}
+
+.right-sidebar-panel a[aria-current="true"] {
+  @apply text-AO3-magenta!;
+}
+
+li:has(a[aria-current="true"]) {
+  @apply border-l-2 border-AO3-muted-dark-text! dark:border-AO3-maroon!;
+}
+
+/* BUTTONS */
+/* === SHARED PILL BASE === */
+.sl-link-button {
+  @apply rounded-full transition-all duration-200 ease-in-out;
+}
+
+/* === PRIMARY === */
+.sl-link-button .primary {
+  @apply bg-AO3-magenta! text-white! border-none! hover:bg-AO3-dusk! hover:shadow-glow-magenta!;
+}
+
+/* === SECONDARY === */
+.sl-link-button .secondary {
+  @apply border border-AO3-maroon dark:bg-AO3-dark-card dark:text-AO3-silver hover:border-AO3-magenta hover:shadow-glow-magenta
+ bg-AO3-light-card text-AO3-dark-maroon;
+}
+
+/* === MINIMAL === */
+.sl-link-button .minimal {
+  @apply bg-transparent text-AO3-magenta border-none hover:bg-AO3-magenta/10 hover:shadow-glow-magenta;
+}
+
+/* TODO: Style summary, details, dl, dt, and dd. */
+
+/* TODO: Style pagination. */

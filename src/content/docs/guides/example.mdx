@@ -1,0 +1,135 @@
+---
+title: Example Guide
+description: A guide in my new Starlight docs site.
+---
+
+import { Badge } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { Code } from 'starlight-theme-nova/components';
+import { FileTree } from '@astrojs/starlight/components';
+import { LinkButton } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This is a guide to all the styles. **Strong.** _Emphasis._ `Inline Code`.
+
+## Lists (Heading 2)
+
+- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+  - A subitem
+- Another item
+
+### Heading 3
+
+1. First
+2. Second
+3. Third
+
+## Link Buttons
+
+<LinkButton href="/getting-started/">Primary</LinkButton>
+<LinkButton href="/reference/configuration/" variant="secondary">
+  Secondary
+</LinkButton>
+<LinkButton href="/reference/configuration/" variant="minimal">
+  Minimal
+</LinkButton>
+
+## Badges
+
+<Badge text="Note" variant="note" />
+<Badge text="Success" variant="success" />
+<Badge text="Tip" variant="tip" />
+<Badge text="Caution" variant="caution" />
+<Badge text="Danger" variant="danger" />
+
+## Asides
+
+<Aside>Some content in an aside. <a href="https://example.com">link</a></Aside>
+
+<Aside type="caution">Some cautionary content. <a href="https://example.com">link</a></Aside>
+
+<Aside type="tip">
+
+Other content is also supported in asides. <a href="https://example.com">link</a>
+
+```js
+// A code snippet, for example.
+```
+
+</Aside>
+
+<Aside type="danger">Do not give your password to anyone. <a href="https://example.com">link</a></Aside>
+
+## Cards
+
+<CardGrid>
+  <Card title="Check this out" icon="open-book">
+    Interesting content you want to highlight.
+  </Card>
+  <Card title="Other feature" icon="information">
+    More information you want to share.
+  </Card>
+</CardGrid>
+
+### Link Cards
+
+<CardGrid>
+  <LinkCard title="Authoring Markdown" href="/guides/authoring-content/" />
+  <LinkCard title="Components" href="/components/using-components/" />
+</CardGrid>
+
+## Code
+export const exampleCode=`import { defineCollection } from 'astro:content';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
+
+export const collections = {
+	docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
+};`
+
+export const exampleShell=`docker exec -it seafile bash`
+
+
+<Code code={exampleCode} lang="ts" title="content.config.ts" />
+
+<Code code={exampleShell} lang="bash" title="Enter Seafile Container" />
+
+## File Tree
+
+<FileTree>
+
+- astro.config.mjs
+- **package.json** a very important file
+- src
+  - components
+    - Header.astro
+    - Title.astro
+  - pages/
+
+</FileTree>
+
+## Steps
+<Steps>
+
+1. Import the component into your MDX file:
+
+   ```js
+   import { Steps } from '@astrojs/starlight/components';
+   ```
+
+2. Wrap `<Steps>` around your ordered list items.
+
+</Steps>
+
+## Tabs
+
+<Tabs>
+  <TabItem label="Stars" icon="star">
+    Sirius, Vega, Betelgeuse
+  </TabItem>
+  <TabItem label="Moons" icon="moon">
+    Io, Europa, Ganymede
+  </TabItem>
+</Tabs>

@@ -1,0 +1,126 @@
+/* ============================
+ * sl-link-button styling — AO3/Archie palette
+ * Targets Starlight's default <LinkButton> markup:
+ *  <a class="sl-link-button primary|secondary|minimal">
+ *
+ * Maximally @apply-based. What's left as literal CSS is only what
+ * Tailwind has no utility for: `content:''` semantics (still expressed
+ * via the content-[''] utility below) and the @media wrappers
+ * themselves — there's no way to avoid writing those in a plain
+ * stylesheet outside JSX.
+ * ============================ */
+
+.sl-link-button {
+  @apply inline-flex items-center justify-center gap-2 font-sans leading-none no-underline cursor-pointer relative overflow-hidden border border-transparent rounded-lg backdrop-blur transition-[transform,box-shadow,background] duration-150 ease-out;
+}
+
+/* ---------- Primary: warm AO3 gradient, the "human" CTA ---------- */
+
+.sl-link-button.primary {
+  @apply px-6 py-4 text-white! bg-linear-135 from-AO3-magenta to-AO3-dusk shadow-[0_4px_16px_var(--tw-shadow-color)] shadow-AO3-magenta/30;
+}
+.sl-link-button.primary::before {
+  @apply content-[''] absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent;
+}
+
+.sl-link-button.primary:hover {
+  @apply -translate-y-px shadow-[0_8px_24px_var(--tw-shadow-color)] shadow-AO3-magenta/40;
+}
+
+.sl-link-button.primary:hover::before {
+  @apply h-0.5 via-white/60;
+}
+
+.sl-link-button.secondary {
+  @apply px-4 py-3 bg-transparent/90 text-AO3-teal! border-AO3-teal/40 ring-AO3-teal/15 dark:text-AO3-cyan! dark:border-AO3-cyan/40 ring-1 dark:ring-AO3-cyan/15 shadow-[0_4px_16px_var(--tw-shadow-color)] shadow-AO3-cyan/10;
+}
+
+.sl-link-button.secondary::before {
+  @apply content-[''] absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-AO3-teal/50 dark:via-AO3-cyan/50 to-transparent;
+}
+
+.sl-link-button.secondary:hover {
+  @apply -translate-y-px bg-transparent border-AO3-teal dark:border-AO3-cyan dark:text-AO3-cyan! ring-1 ring-AO3-cyan shadow-[0_0_20px_var(--tw-shadow-color)] shadow-AO3-cyan/35;
+}
+
+/* ---------- Minimal: text link, echoes the cyan already used in code ---------- */
+
+.sl-link-button.minimal {
+  @apply px-4 py-3 font-medium bg-transparent border-none backdrop-blur-none  text-AO3-teal dark:text-AO3-cyan;
+}
+
+.sl-link-button.minimal:hover {
+  @apply text-AO3-magenta bg-AO3-magenta/10;
+}
+
+/* ---------- Icons ---------- */
+
+.sl-link-button svg {
+  @apply w-4 h-4 shrink-0 transition-transform duration-150 ease-out;
+}
+
+.sl-link-button.primary:hover svg,
+.sl-link-button.secondary:hover svg {
+  @apply scale-110;
+}
+
+.sl-link-button.minimal:hover svg {
+  @apply translate-x-0.5;
+}
+
+/* ---------- Focus states — always AO3-cyan, "the robot noticed you" ---------- */
+
+.sl-link-button:focus-visible {
+  @apply outline-2 outline-offset-2 outline-AO3-cyan;
+}
+
+/* ---------- Responsive sizing ---------- */
+
+@media (min-width: 50rem) {
+  .sl-link-button {
+  @apply text-base;
+  }
+}
+
+@media (max-width: 50rem) {
+  .sl-link-button {
+  @apply text-sm;
+  }
+
+  .sl-link-button.primary,
+  .sl-link-button.secondary {
+  @apply px-5 py-3.5;
+  }
+
+  .sl-link-button.minimal {
+  @apply px-3 py-2.5;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-contrast: high) {
+  .sl-link-button {
+  @apply backdrop-blur-none border-2;
+  }
+
+  .sl-link-button.primary {
+  @apply bg-AO3-magenta border-AO3-magenta text-AO3-black;
+  }
+
+  .sl-link-button.secondary {
+  @apply bg-transparent dark:border-AO3-cyan dark:text-AO3-cyan;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sl-link-button,
+  .sl-link-button svg {
+  @apply transition-none;
+  }
+
+  .sl-link-button:hover,
+  .sl-link-button:hover svg {
+  @apply transform-none;
+  }
+}

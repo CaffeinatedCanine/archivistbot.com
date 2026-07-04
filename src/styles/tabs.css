@@ -1,0 +1,37 @@
+starlight-tabs [role='tablist'] {
+  @apply flex gap-1 border-b-transparent rounded-full p-1
+bg-AO3-gray dark:bg-AO3-dark-card;
+}
+
+starlight-tabs .tab > [role='tab'] {
+  @apply rounded-full shadow-none
+text-AO3-muted-light-text dark:text-AO3-muted-dark-text;
+}
+
+starlight-tabs .tab > [role='tab']:hover {
+  @apply bg-AO3-light-card text-AO3-dark-maroon
+dark:bg-AO3-maroon dark:text-AO3-silver;
+}
+
+starlight-tabs .tab > [role='tab']:focus-visible {
+  @apply bg-AO3-light-card/70 dark:bg-AO3-maroon/50;
+}
+
+starlight-tabs .tab > [role='tab']:active {
+  @apply bg-AO3-light-card dark:bg-AO3-maroon/70 rounded-full;
+}
+
+starlight-tabs .tab > [role='tab'][aria-disabled='true'] {
+  @apply text-AO3-muted-light-text/50 dark:text-AO3-muted-dark-text/50
+pointer-events-none;
+}
+
+starlight-tabs .tab [role='tab'][aria-selected='true'] {
+  @apply bg-AO3-magenta/15 text-AO3-dusk
+dark:bg-AO3-magenta/20 dark:text-AO3-magenta;
+}
+
+starlight-tabs [role='tabpanel'] {
+  @apply border border-AO3-light-card dark:border-AO3-maroon
+rounded-xl bg-AO3-white dark:bg-AO3-wine p-4 leading-[1.75];
+}

@@ -1,0 +1,43 @@
+  /* ============================
+   * BADGES
+   * ============================ */
+
+  .sl-badge {
+		@apply rounded-lg border border-transparent transition-all duration-200 ease-in-out;
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+	}
+
+  /* Note — cyan */
+  .sl-badge.note {
+    @apply border-AO3-teal/40! text-AO3-teal! dark:border-AO3-teal/40! dark:text-AO3-cyan!;
+    background: linear-gradient(135deg, rgba(61, 219, 217, 0) 0%, rgba(61, 219, 217, 0.15) 100%) !important;
+  }
+
+  /* Tip — magenta */
+  .sl-badge.tip {
+    @apply border-AO3-magenta/40! text-AO3-dusk! dark:text-AO3-magenta!;
+    background: linear-gradient(135deg, rgba(233, 79, 138, 0) 0%, rgba(233, 79, 138, 0.15) 100%) !important;
+  }
+
+  /* Caution — amber */
+  .sl-badge.caution {
+    @apply border-Archie-amber/40 text-[#b37d00] dark:text-Archie-amber;
+    background: linear-gradient(135deg, rgba(255, 182, 39, 0) 0%, rgba(255, 182, 39, 0.15) 100%);
+  }
+
+  /* Danger — red */
+  .sl-badge.danger {
+    @apply border-AO3-danger/40 text-[#dc2626] dark:text-AO3-danger;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0) 0%, rgba(239, 68, 68, 0.15) 100%);
+  }
+
+  /* Success — green (not an Archie color) */
+  .sl-badge.success {
+    @apply border-[#22c55e]/40 text-[#15803d] dark:text-[#22c55e];
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0) 0%, rgba(34, 197, 94, 0.15) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sl-badge { @apply transition-none; }
+  }

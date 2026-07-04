@@ -1,0 +1,95 @@
+/* TODO: Fix font rendering as different sizes in different asides.  */
+/* TODO: Correct light mode contrast on all asides. */
+
+  .starlight-aside {
+    @apply relative rounded-xl overflow-hidden
+          transition-[box-shadow,transform] duration-200 ease-in-out bg-(--aside-accent)/10! border-l-[3px]! border-(--aside-accent)! border-y border-r text-base!;
+  }
+
+  .starlight-aside::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 pointer-events-none;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--aside-accent) 50%,
+      transparent 100%
+    );
+    opacity: 0.85;
+  }
+
+  .starlight-aside:hover {
+    @apply -translate-y-px;
+    box-shadow: 0 6px 28px var(--aside-glow);
+  }
+
+  .starlight-aside__title {
+    @apply uppercase tracking-wider text-(--aside-accent)! font-semibold text-sm;
+  }
+
+  .starlight-aside__title::after {
+    content: '';
+    @apply grow h-px ml-3;
+    background: linear-gradient(90deg, var(--aside-accent) 0%, transparent 100%);
+    opacity: 0.5;
+  }
+
+  .starlight-aside__icon {
+  @apply text-(--aside-accent)!;
+  }
+
+  .starlight-aside a {
+    @apply underline-offset-[0.2em] decoration-transparent
+          transition-[text-decoration-color] duration-200 ease-in-out text-(--aside-accent)!;
+  }
+
+  .starlight-aside a:hover {
+	text-decoration-color: var(--aside-accent) !important;
+  }
+
+	.starlight-aside code {
+		@apply bg-(--aside-accent)/30! border-0!;
+	}
+
+	.starlight-aside code span {
+		@apply text-(--sl-color-text)!;
+	}
+
+  /* ── Note (cyan — calm/informational) ── */
+  .starlight-aside--note {
+    --aside-accent: theme(colors.AO3-cyan);
+    --aside-glow: rgba(61, 219, 217, 0.25);
+  }
+
+[data-theme="light"] .starlight-aside--note {
+		--aside-accent: theme(colors.AO3-teal);
+		--aside-glow: rgba(61, 219, 217, 0.25);
+	}
+
+  /* ── Tip (magenta — action/helpful) ── */
+  .starlight-aside--tip {
+    --aside-accent: theme(colors.AO3-magenta);
+    --aside-glow: rgba(233, 79, 138, 0.25);
+  }
+
+  /* ── Caution (amber — warning) ── */
+  .starlight-aside--caution {
+    --aside-accent: theme(colors.Archie-amber);
+    --aside-glow: rgba(255, 182, 39, 0.25);
+  }
+
+  /* ── Danger (red — critical) ── */
+  .starlight-aside--danger {
+    --aside-accent: theme(colors.AO3-danger);
+    --aside-glow: rgba(239, 68, 68, 0.25);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .starlight-aside {
+      @apply transition-none;
+    }
+    .starlight-aside:hover {
+      @apply translate-y-0;
+    }
+  }

@@ -1,0 +1,11 @@
+.sl-steps li::before {
+	@apply bg-AO3-magenta/10 border border-AO3-magenta text-AO3-teal dark:text-AO3-cyan font-mono;
+}
+
+.sl-steps li::after {
+	@apply bg-AO3-muted-dark-text! dark:bg-AO3-maroon!;
+}
+
+.sl-steps li:last-child::after {
+	@apply hidden;
+}

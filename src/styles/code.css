@@ -1,0 +1,59 @@
+/* TODO: ANNIHILATE THE BORDER. WHERE IS IT COMING FROM?! */
+
+pre.astro-code {
+	@apply border-0!;
+}
+.astro-code, code {
+  @apply rounded-xl! bg-AO3-light-card/30! dark:bg-AO3-dark-card! border-0! shadow-card! dark:shadow-card-dark!;
+}
+
+@media (min-width: 80rem) {
+  .astro-code {
+    @apply max-w-none!;
+  }
+}
+
+/* ---------- Line highlighting ---------- */
+
+.astro-code .ec-line.mark {
+  @apply bg-AO3-magenta/20!;
+}
+
+/* ---------- Layout fixes carried over from the original ---------- */
+
+.sl-markdown-content .astro-code .ec-line {
+  @apply [margin-block-start:initial]!;
+}
+
+.codeblock .astro-code figure.frame {
+  @apply [margin-block-start:initial]!;
+}
+
+pre.astro-code {
+  @apply border-0!;
+}
+
+.astro-code + p {
+  @apply mb-4!;
+}
+
+/* ---------- Caption / header bar ---------- */
+
+.astro-code figcaption {
+  @apply border-b! border-AO3-magenta/15! bg-AO3-gray! dark:bg-AO3-wine!;
+}
+
+.astro-code figcaption.header {
+  @apply min-h-auto!;
+}
+
+.astro-code .frame.is-terminal .header::before {
+  @apply opacity-[0.44]!;
+}
+
+
+/* ---------- Code text ---------- */
+
+.astro-code code {
+  @apply font-mono! font-normal! box-border block w-full [font-feature-settings:"liga"_0,"calt"_0] text-base!;
+}

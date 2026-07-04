@@ -1,0 +1,16 @@
+starlight-file-tree {
+  @apply rounded-xl! shadow-card! dark:shadow-card-dark! bg-Archie-screen/25! dark:bg-Archie-screen! text-AO3-white! border-0!;
+}
+
+.tree-icon {
+	@apply fill-AO3-teal! hover:fill-AO3-cyan!;
+}
+
+
+.highlight {
+	@apply bg-AO3-light-card! dark:bg-AO3-dark-card!;
+}
+
+.comment { 
+	@apply text-AO3-muted-light-text dark:text-AO3-muted-dark-text!
+}
