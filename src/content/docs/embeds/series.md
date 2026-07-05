@@ -1,6 +1,8 @@
 ---
-title: Example Reference
+title: Series Embeds
 description: A reference page in my new Starlight docs site.
+sidebar:
+  order: 3
 ---
 
 Reference pages are ideal for outlining how things work in terse and clear terms.

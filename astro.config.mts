@@ -21,13 +21,20 @@ export default defineConfig({
         {
           label: "Guides",
           items: [
-            // Each item here is one entry in the navigation menu.
             { label: "Example Guide", slug: "guides/example" },
           ],
         },
         {
-          label: "Reference",
-          items: [{ autogenerate: { directory: "reference" } }],
+          label: "Embeds",
+          items: [{ autogenerate: { directory: "embeds" } }],
+        },
+				{
+          label: "Commands",
+          items: [{ autogenerate: { directory: "commands" } }],
+        },
+				{
+          label: "Behind the Stacks",
+          items: [{ autogenerate: { directory: "technical" } }],
         },
       ],
       customCss: ["./src/styles/global.css"],
