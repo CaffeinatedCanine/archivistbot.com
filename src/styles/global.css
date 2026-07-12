@@ -93,7 +93,6 @@ site-search button {
 }
 
 /* BASE TEXT STYLES */
-/* TODO: Style blockquote. */
 p,
 li {
   @apply text-lg;
@@ -129,6 +128,59 @@ h4,
 h5 {
   @apply font-medium;
 }
+
+  /* Blockquote */
+  .sl-markdown-content blockquote {
+    @apply border-l-4 border-AO3-magenta bg-AO3-magenta/10 rounded-r-lg px-4 py-2 my-4 italic dark:text-AO3-muted-dark-text text-AO3-muted-light-text;
+  }
+
+  .sl-markdown-content blockquote p {
+    @apply m-0;
+  }
+
+  /* Summary / Details */
+  .sl-markdown-content details:not(file, directory) {
+    @apply border-l-2 border-AO3-muted-dark-text dark:border-AO3-maroon pl-4 my-4 transition-[border-color] duration-200;
+  }
+
+  .sl-markdown-content details:not(file, directory)[open] {
+    @apply border-AO3-magenta;
+  }
+
+  .sl-markdown-content summary {
+    @apply text-AO3-magenta  font-semibold cursor-pointer list-none flex items-center gap-2;
+  }
+
+  .sl-markdown-content summary::before {
+    content: '›';
+    @apply inline-block text-AO3-teal dark:text-AO3-cyan font-semibold text-lg transition-transform duration-200;
+  }
+
+  .sl-markdown-content details:not(file, directory)[open] summary::before {
+    @apply text-AO3-magenta;
+  }
+
+	  .sl-markdown-content details:not(file, directory)[open] summary {
+    @apply text-AO3-dusk;
+  }
+
+  /* hide default disclosure triangle */
+  .sl-markdown-content summary:not(file, directory)::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Defined Terms */
+
+	  .sl-markdown-content dl {
+			@apply shadow-card dark:shadow-card-dark bg-AO3-black/5 dark:bg-AO3-white/5 rounded-lg p-4 my-4;
+		}
+  .sl-markdown-content dt {
+    @apply text-AO3-magenta dark:text-AO3-magenta font-semibold mt-3 font-mono;
+  }
+
+  .sl-markdown-content dd {
+    @apply border-l-2 border-AO3-maroon/40 pl-3 ml-2 text-AO3-muted-light-text dark:text-AO3-muted-dark-text;
+  }
 
 /* Lists */
 .content-panel ul li:not(> starlight-file-tree),
@@ -235,7 +287,5 @@ li:has(a[aria-current="true"]) {
 .sl-link-button .minimal {
   @apply bg-transparent text-AO3-magenta border-none hover:bg-AO3-magenta/10 hover:shadow-glow-magenta;
 }
-
-/* TODO: Style summary, details, dl, dt, and dd. */
 
 /* TODO: Style pagination. */
