@@ -1,0 +1,143 @@
+@layer components {
+  .pagination-links {
+    @apply my-8 mb-6 grid grid-cols-2 gap-3 p-0;
+  }
+
+  .pagination-links a {
+    @apply relative flex items-center gap-2 overflow-hidden rounded-xl border border-AO3-magenta/20 bg-gradient-to-br from-AO3-magenta/10 to-AO3-maroon/10 px-4 py-3 text-AO3-silver no-underline shadow-[0_4px_16px_rgba(0,0,0,0.10),0_1px_4px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.10)] backdrop-blur-xl transition-all duration-300;
+  }
+
+  .pagination-links a[rel="prev"] {
+    @apply justify-start text-left;
+  }
+
+  .pagination-links a[rel="next"] {
+    @apply justify-end text-right;
+  }
+
+  .pagination-links a svg {
+    @apply order-2 h-4 w-4 shrink-0 text-AO3-magenta transition-all duration-300;
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-AO3-magenta) 30%, transparent));
+  }
+
+  .pagination-links a[rel="prev"] svg {
+    @apply order-1;
+  }
+
+  .pagination-links a[rel="next"] svg {
+    @apply order-2 ml-auto;
+  }
+
+  .pagination-links a > span {
+    @apply flex flex-1 flex-col gap-0.5 text-[0.8rem] font-medium leading-[1.2] opacity-80;
+  }
+
+  .pagination-links a[rel="prev"] > span {
+    @apply order-2 items-start text-left;
+  }
+
+  .pagination-links a[rel="next"] > span {
+    @apply order-1 items-end text-right mr-auto;
+  }
+
+  .pagination-links a .link-title {
+    @apply m-0 text-base font-semibold leading-[1.3];
+    color: var(--color-AO3-silver);
+    background-image: linear-gradient(135deg, var(--color-AO3-silver), var(--color-AO3-magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .pagination-links a:hover {
+    @apply -translate-y-0.5 shadow-[0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.15)];
+    border-color: color-mix(in srgb, var(--color-AO3-magenta) 25%, transparent);
+    background: linear-gradient(135deg, rgba(233, 79, 138, 0.16) 0%, rgba(92, 34, 48, 0.12) 100%);
+  }
+
+  .pagination-links a:hover svg {
+    color: var(--sl-color-accent-high);
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--sl-color-accent) 50%, transparent));
+    transform: scale(1.1);
+  }
+
+  .pagination-links a:hover .link-title {
+    background-image: linear-gradient(135deg, var(--color-AO3-dusk), var(--color-AO3-magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .pagination-links a:focus-visible {
+    @apply outline-2 outline-offset-2 shadow-[0_0_0_4px_color-mix(in_srgb,var(--color-AO3-magenta)_20%,transparent),0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08)];
+    outline-color: var(--color-AO3-magenta);
+  }
+}
+
+@media (max-width: 640px) {
+  .pagination-links {
+    @apply grid-cols-1 gap-3;
+  }
+
+  .pagination-links a {
+    @apply gap-2 px-4 py-3;
+  }
+
+  .pagination-links a[rel="next"] {
+    @apply justify-start text-left;
+  }
+
+  .pagination-links a[rel="next"] > span {
+    @apply order-2 mr-0 items-start text-left;
+  }
+
+  .pagination-links a[rel="next"] svg {
+    @apply order-1 ml-0;
+  }
+}
+
+:root[data-theme='light'] .pagination-links a {
+  @apply border-AO3-maroon/15 bg-gradient-to-br from-AO3-white/90 to-AO3-silver/80 text-AO3-dark-maroon shadow-[0_4px_16px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.80)];
+}
+
+:root[data-theme='light'] .pagination-links a:hover {
+  @apply shadow-[0_12px_32px_rgba(0,0,0,0.12),0_4px_12px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)];
+  border-color: color-mix(in srgb, var(--color-AO3-magenta) 20%, transparent);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+@media (prefers-contrast: high) {
+  .pagination-links a {
+    border: 2px solid var(--sl-color-gray-4);
+    background: var(--sl-color-bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .pagination-links a:hover {
+    border-color: var(--sl-color-accent);
+  }
+
+  .pagination-links a .link-title {
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: var(--sl-color-white);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pagination-links a,
+  .pagination-links a svg,
+  .pagination-links a .link-title {
+    transition: none;
+  }
+
+  .pagination-links a:hover {
+    transform: none;
+  }
+
+  .pagination-links a:hover svg {
+    transform: none;
+  }
+}
