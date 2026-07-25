@@ -130,87 +130,93 @@ h5 {
 }
 
   /* Blockquote */
-  .sl-markdown-content blockquote {
+  .content-panel blockquote {
     @apply border-l-4 border-AO3-magenta bg-AO3-magenta/10 rounded-r-lg px-4 py-2 my-4 italic dark:text-AO3-muted-dark-text text-AO3-muted-light-text;
   }
 
-  .sl-markdown-content blockquote p {
+  .content-panel blockquote p {
     @apply m-0;
   }
 
   /* Summary / Details */
-  .sl-markdown-content details:not(file, directory) {
+.content-panel details:not(.directory details) {
     @apply border-l-2 border-AO3-muted-dark-text dark:border-AO3-maroon pl-4 my-4 transition-[border-color] duration-200;
   }
-
-  .sl-markdown-content details:not(file, directory)[open] {
+.content-panel details:not(.directory details)[open] {
     @apply border-AO3-magenta;
   }
 
-  .sl-markdown-content summary {
+.content-panel summary:not(.directory details summary) {
     @apply text-AO3-magenta  font-semibold cursor-pointer list-none flex items-center gap-2;
   }
 
-  .sl-markdown-content summary::before {
-    content: '›';
-    @apply inline-block text-AO3-teal dark:text-AO3-cyan font-semibold text-lg transition-transform duration-200;
+.content-panel summary:not(.directory details summary) {
+    @apply before:inline-block before:text-AO3-teal before:dark:text-AO3-cyan before:font-semibold before:text-lg before:transition-transform before:duration-200;
+
+		&::before {
+			content: '›';
+		}
   }
 
-  .sl-markdown-content details:not(file, directory)[open] summary::before {
-    @apply text-AO3-magenta;
-  }
+	/* for details and sidebar. must not have .content-panel. */
+	details ul li a:not(.file, .directory) {
+  @apply hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full;
+}
 
-	  .sl-markdown-content details:not(file, directory)[open] summary {
-    @apply text-AO3-dusk;
-  }
+	details ul li:not(.file, .directory) {
+  @apply border-s-2 border-s-AO3-muted-dark-text dark:border-s-AO3-maroon;
+}
 
   /* hide default disclosure triangle */
-  .sl-markdown-content summary:not(file, directory)::-webkit-details-marker {
+  .content-panel summary::-webkit-details-marker {
     display: none;
   }
 
-  /* Defined Terms */
+  /* DEFINED TERMS */
 
-	  .sl-markdown-content dl {
+	  .content-panel dl {
 			@apply shadow-card dark:shadow-card-dark bg-AO3-black/5 dark:bg-AO3-white/5 rounded-lg p-4 my-4;
 		}
-  .sl-markdown-content dt {
+  .content-panel dt {
     @apply text-AO3-magenta dark:text-AO3-magenta font-semibold mt-3 font-mono;
   }
 
-  .sl-markdown-content dd {
+  .content-panel dd {
     @apply border-l-2 border-AO3-maroon/40 pl-3 ml-2 text-AO3-muted-light-text dark:text-AO3-muted-dark-text;
   }
 
 /* Lists */
-.content-panel ul li:not(> starlight-file-tree),
-.content-panel ul ul li:not(> starlight-file-tree) {
+.content-panel ul li,
+.content-panel ul ul li {
   @apply list-none! pl-4;
 }
 
-.content-panel ul li:not(> starlight-file-tree) {
-  @apply relative pl-[1.1em] mb-1;
+.content-panel ul li:not(.file, .directory, .tab) {
+  @apply relative pl-[1.1em] mb-1 before:absolute before:left-0 before:text-[1.1em] before:leading-none before:font-semibold before:text-AO3-magenta;
+
+	&::before {
+		content: '›';
+	}
 }
 
-.content-panel ul li::before:not(> starlight-file-tree) {
-  content: "›";
-  @apply absolute left-0 text-[1.1em] leading-none font-semibold text-AO3-magenta;
+.content-panel ul ul li:not(.file, .directory, .tab) {
+  @apply before:text-AO3-teal before:dark:text-AO3-cyan;
+
+	&::before {
+		content: '›';
+	}
 }
 
-.content-panel ul ul li::before:not(> starlight-file-tree) {
-  @apply text-AO3-teal dark:text-AO3-cyan;
-}
-
-.sl-markdown-content ol:not(.sl-steps) li {
+.content-panel ol:not(.sl-steps) li {
   @apply list-none! pl-0;
 }
 
-.sl-markdown-content ol:not(.sl-steps) li {
+.content-panel ol:not(.sl-steps) li {
   counter-increment: ol-counter;
   @apply relative pl-8 mb-[5px];
 }
 
-.sl-markdown-content ol:not(.sl-steps) li::before {
+.content-panel ol:not(.sl-steps) li::before {
   content: counter(ol-counter);
   @apply absolute left-0 font-mono font-medium text-[0.82em] text-AO3-magenta top-[0.35em] min-w-[1.4em] text-right;
 }
@@ -220,17 +226,11 @@ a {
   @apply text-AO3-magenta hover:text-AO3-dusk;
 }
 
-details ul li a {
-  @apply hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full;
-}
-
 [aria-current="page"] {
   @apply bg-AO3-magenta! text-AO3-gray! dark:text-AO3-wine! rounded-full;
 }
 
-details ul li:not(.file, .directory) {
-  @apply border-s-2 border-s-AO3-muted-dark-text dark:border-s-AO3-maroon;
-}
+
 
 /* HEADER STYLES */
 header {

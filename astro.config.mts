@@ -10,11 +10,30 @@ export default defineConfig({
     starlight({
       plugins: [starlightThemeNova(/* options */)],
       title: "Archivist",
+			components: {
+				Footer: './src/components/Footer.astro',
+				SocialIcons: './src/components/Socials.astro',
+			},
       social: [
-        {
-          icon: "github",
-          label: "GitHub",
-          href: "https://github.com/withastro/starlight",
+				{
+					icon: "discord",
+					label: "support server",
+					href: "https://discord.gg/FzhC9bVFva"
+				},
+				{
+					icon: "email",
+					label: "email",
+					href: "mailto:archivistbot@gmail.com"
+				},
+				{
+          icon: "pencil",
+          label: "blog",
+          href: "/blog",
+        },
+				{
+          icon: "blueSky",
+          label: "BlueSky",
+          href: "https://bsky.app/profile/yourhandle",
         },
       ],
       sidebar: [

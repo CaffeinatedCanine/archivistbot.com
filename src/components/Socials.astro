@@ -1,0 +1,11 @@
+---
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+import { Tumblr } from 'simple-icons-astro';
+
+const links = {
+  tumblr: "https://yourhandle.tumblr.com",
+};
+---
+
+<Default><slot /></Default>
+<a href={links.tumblr} class="sl-flex" rel="me"><Tumblr class="h-[16px]" /></a>
