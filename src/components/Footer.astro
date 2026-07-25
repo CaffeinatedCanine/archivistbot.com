@@ -1,9 +1,11 @@
 ---
 import EditLink from '@astrojs/starlight/components/EditLink.astro'
 import LastUpdated from '@astrojs/starlight/components/LastUpdated.astro';
-import Pagination from 'starlight-theme-nova/components/Pagination.astro';
+import Pagination from '@astrojs/starlight/components/Pagination.astro';
 import { Icon } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
 import { Tumblr } from 'simple-icons-astro';
+import archieImage from '../assets/archie-full.png';
 
 const year = new Date().getFullYear();
 
@@ -16,6 +18,19 @@ const links = {
   tumblr: "https://yourhandle.tumblr.com",
   blog: "/blog",
 };
+
+const socialLinks = [
+  { href: links.blog, title: 'blog', label: 'blog', icon: 'pencil', external: false },
+  { href: links.bluesky, title: 'BlueSky', label: 'BlueSky', icon: 'blueSky', external: true },
+  { href: links.tumblr, title: 'tumblr', label: 'tumblr', icon: 'tumblr', external: true },
+] as const;
+
+const footerLinks = [
+  { href: links.discord, label: 'Support Server', external: true },
+  { href: links.invite, label: 'Invite Archivist', external: true },
+  { href: links.privacy, label: 'Privacy Policy', external: false },
+  { href: links.terms, label: 'Terms of Service', external: false },
+] as const;
 ---
 
 <div class="sl-flex">
@@ -38,17 +53,37 @@ const links = {
 				</p>
 			</div>
       <nav class="footer__socials" aria-label="Social links">
-        <a href={links.blog} title="blog" name="blog"><Icon name="pencil" class="text-[24px]"/></a>
-        <a href={links.bluesky} target="_blank" rel="noopener noreferrer" title="BlueSky" name="BlueSky"><Icon name="blueSky" class="text-[24px]" /></a>
-        <a href={links.tumblr} target="_blank" rel="noopener noreferrer" title="tumblr" name="tumblr"><Tumblr class="text-[24px]" /></a>
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            title={link.title}
+            aria-label={link.label}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >
+            {link.icon === 'tumblr' ? (
+              <Tumblr class="text-[24px]" />
+            ) : (
+              <Icon name={link.icon} class="text-[24px]" />
+            )}
+          </a>
+        ))}
       </nav>
 
-        <nav class="footer__links" aria-label="Footer links">
-          <a href={links.discord} target="_blank" rel="noopener noreferrer">Support Server</a> · 
-          <a href={links.invite} target="_blank" rel="noopener noreferrer">Invite Archivist</a> · 
-          <a href={links.privacy}>Privacy Policy</a> · 
-          <a href={links.terms}>Terms of Service</a>
-        </nav>
+      <nav class="footer__links" aria-label="Footer links">
+        {footerLinks.map((link, index) => (
+          <>
+            <a
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+            >
+              {link.label}
+            </a>
+            {index < footerLinks.length - 1 && ' · '}
+          </>
+        ))}
+      </nav>
 			<div class="footer__bottom">
         <p class="footer__attribution">
           Built with <Icon name="astro" class="text-black dark:text-white text-sm inline align-bottom" /> <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> & <Icon name="starlight" class="text-yellow-500 dark:text-yellow-400 text-sm inline align-bottom" /> <a href="https://starlight.astro.build" target="_blank" rel="noopener noreferrer">Starlight</a>
@@ -63,8 +98,8 @@ const links = {
       aria-label="Suggest a feature"
       title="Suggest a feature to Archie!"
     >
-      <img
-        src="../../src/assets/archie-full.png"
+      <Image
+        src={archieImage}
         alt="Archie the Archivist robot mascot"
         class="footer__archie-img"
       />
@@ -104,7 +139,7 @@ const links = {
   }
 
   .footer__socials a {
-    @apply text-lg text-AO3-magenta  
+    @apply text-lg text-AO3-magenta
           hover:text-AO3-muted-light-text dark:hover:text-AO3-muted-dark-text
           transition-colors duration-200 no-underline;
   }
@@ -119,7 +154,7 @@ const links = {
 
   .footer__links a {
     @apply text-sm text-AO3-muted-light-text dark:text-AO3-muted-dark-text
-          hover:text-AO3-magenta 
+          hover:text-AO3-magenta
           transition-colors duration-200 no-underline;
   }
 

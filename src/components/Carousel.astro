@@ -1,0 +1,154 @@
+---
+interface Props {
+  folder: string;
+}
+
+const { folder } = Astro.props;
+const normalizedFolder = folder.replace(/^\/+|\/+$/g, '');
+
+const imageModules = import.meta.glob('/src/assets/**/*.{jpg,jpeg,png,webp,avif,gif}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+const images = Object.entries(imageModules)
+  .filter(([path]) => path.startsWith(`/src/assets/${normalizedFolder}/`))
+  .map(([path, src]) => {
+    const fileName = path.split('/').pop() ?? 'image';
+    const caption = fileName.replace(/\.[^.]+$/, '');
+
+    return {
+      src,
+      alt: normalizedFolder,
+      caption,
+    };
+  })
+  .sort((a, b) => a.caption.localeCompare(b.caption));
+
+const carouselId = `carousel-${Math.random().toString(36).slice(2, 10)}`;
+const serializedImages = JSON.stringify(images);
+---
+
+<div class="my-6 flex flex-col gap-3" id={carouselId}>
+  {images.length === 0 ? (
+    <p class="m-0 opacity-80">No images found for this folder.</p>
+  ) : (
+    <>
+      <div class="flex min-h-64 items-center justify-center overflow-hidden rounded-xl bg-slate-900/5">
+        <img
+          class="block w-full max-h-96 object-contain"
+          data-carousel-image
+          src={images[0]?.src}
+          alt={images[0]?.alt}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+
+      <div class="flex items-center justify-between gap-4">
+        <p class="m-0 text-[0.95rem]" data-carousel-caption>{images[0]?.caption}</p>
+        <p class="m-0 text-[0.95rem]" data-carousel-counter>1 / {images.length}</p>
+      </div>
+
+      <div class="flex gap-3" role="group" aria-label="Carousel controls">
+        <button
+          class="rounded-full border border-current bg-transparent px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+          type="button"
+          data-carousel-prev
+          aria-label="Previous image"
+        >
+          ←
+        </button>
+        <button
+          class="rounded-full border border-current bg-transparent px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+          type="button"
+          data-carousel-next
+          aria-label="Next image"
+        >
+          →
+        </button>
+      </div>
+    </>
+  )}
+</div>
+
+<script is:inline define:vars={{ carouselId, serializedImages }}>
+  const root = document.getElementById(carouselId);
+  if (!root) {
+    return;
+  }
+
+  const images = JSON.parse(serializedImages);
+  const imageElement = root.querySelector('[data-carousel-image]');
+  const captionElement = root.querySelector('[data-carousel-caption]');
+  const counterElement = root.querySelector('[data-carousel-counter]');
+  const prevButton = root.querySelector('[data-carousel-prev]');
+  const nextButton = root.querySelector('[data-carousel-next]');
+
+  if (!images.length || !imageElement || !captionElement || !counterElement) {
+    return;
+  }
+
+  let activeIndex = 0;
+
+  const preloadImage = (src) => {
+    if (!src) {
+      return;
+    }
+
+    const preloadElement = new Image();
+    preloadElement.decoding = 'async';
+    preloadElement.src = src;
+  };
+
+  const preloadAdjacentImages = () => {
+    const indexes = [
+      activeIndex,
+      (activeIndex + 1) % images.length,
+      (activeIndex - 1 + images.length) % images.length,
+    ];
+
+    indexes.forEach((index) => {
+      const currentImage = images[index];
+      if (currentImage) {
+        preloadImage(currentImage.src);
+      }
+    });
+  };
+
+  const updateCarousel = () => {
+    const currentImage = images[activeIndex];
+    if (!currentImage) {
+      return;
+    }
+
+    imageElement.src = currentImage.src;
+    imageElement.alt = currentImage.alt;
+    captionElement.textContent = currentImage.caption;
+    counterElement.textContent = `${activeIndex + 1} / ${images.length}`;
+
+    if (prevButton) {
+      prevButton.disabled = activeIndex === 0;
+    }
+
+    if (nextButton) {
+      nextButton.disabled = activeIndex === images.length - 1;
+    }
+
+    preloadAdjacentImages();
+  };
+
+  prevButton?.addEventListener('click', () => {
+    activeIndex = (activeIndex - 1 + images.length) % images.length;
+    updateCarousel();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    activeIndex = (activeIndex + 1) % images.length;
+    updateCarousel();
+  });
+
+  updateCarousel();
+</script>
+
