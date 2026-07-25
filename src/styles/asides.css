@@ -58,16 +58,17 @@
 
   /* ── Note (cyan — calm/informational) ── */
   .starlight-aside--note {
-    --aside-accent: theme(colors.AO3-cyan);
+    /* Light mode (default) */
+    --aside-accent: theme(colors.AO3-teal);
     --aside-glow: rgba(61, 219, 217, 0.25);
-		--aside-text: var(--aside-accent);
+    --aside-text: var(--aside-accent);
   }
 
-[data-theme="light"] .starlight-aside--note {
-		--aside-accent: theme(colors.AO3-teal);
-		--aside-glow: rgba(61, 219, 217, 0.25);
-		--aside-text: var(--aside-accent);
-	}
+  .dark .starlight-aside--note {
+    --aside-accent: theme(colors.AO3-cyan);
+    --aside-glow: rgba(61, 219, 217, 0.25);
+    --aside-text: var(--aside-accent);
+  }
 
   /* ── Tip (magenta — action/helpful) ── */
   .starlight-aside--tip {

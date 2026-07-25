@@ -1,23 +1,23 @@
 @layer components {
   .pagination-links {
-    @apply my-8 mb-6 grid grid-cols-2 gap-3 p-0;
+    @apply my-8 mb-6 grid grid-cols-2 gap-3 p-0 w-full;
   }
 
   .pagination-links a {
-    @apply relative flex items-center gap-2 overflow-hidden rounded-xl border border-AO3-magenta/20 bg-gradient-to-br from-AO3-magenta/10 to-AO3-maroon/10 px-4 py-3 text-AO3-silver no-underline shadow-[0_4px_16px_rgba(0,0,0,0.10),0_1px_4px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.10)] backdrop-blur-xl transition-all duration-300;
+    /* Light mode (default) styles */
+    @apply relative flex items-center gap-2 overflow-hidden rounded-xl border border-AO3-maroon/15 bg-linear-to-br from-AO3-white/90 to-AO3-silver/80 px-4 py-3 text-AO3-dark-maroon no-underline shadow-[0_4px_16px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.80)] backdrop-blur-xl transition-all duration-300 dark:border-AO3-magenta/20 dark:bg-linear-to-br dark:from-AO3-magenta/10 dark:to-AO3-maroon/10 dark:text-AO3-silver dark:shadow-[0_4px_16px_rgba(0,0,0,0.10),0_1px_4px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.10)];
   }
 
   .pagination-links a[rel="prev"] {
-    @apply justify-start text-left;
+    @apply justify-start text-left col-start-1 col-end-2 flex flex-row;
   }
 
   .pagination-links a[rel="next"] {
-    @apply justify-end text-right;
+    @apply justify-end text-right col-start-2 col-end-3 flex flex-row;
   }
 
   .pagination-links a svg {
-    @apply order-2 h-4 w-4 shrink-0 text-AO3-magenta transition-all duration-300;
-    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-AO3-magenta) 30%, transparent));
+    @apply order-2 h-4 w-4 shrink-0 transition-all duration-300 text-AO3-teal drop-shadow-[0_0_6px_rgba(26,140,139,0.30)] dark:text-AO3-cyan dark:drop-shadow-[0_0_6px_rgba(61,219,217,0.30)];
   }
 
   .pagination-links a[rel="prev"] svg {
@@ -41,39 +41,36 @@
   }
 
   .pagination-links a .link-title {
-    @apply m-0 text-base font-semibold leading-[1.3];
-    color: var(--color-AO3-silver);
-    background-image: linear-gradient(135deg, var(--color-AO3-silver), var(--color-AO3-magenta));
+    @apply m-0 text-base font-semibold leading-[1.3] bg-linear-to-br from-AO3-magenta/10 dark:from-AO3-silver to-AO3-magenta bg-clip-text transition-all duration-300 text-AO3-magenta/10;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease;
   }
 
   .pagination-links a:hover {
-    @apply -translate-y-0.5 shadow-[0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.15)];
-    border-color: color-mix(in srgb, var(--color-AO3-magenta) 25%, transparent);
-    background: linear-gradient(135deg, rgba(233, 79, 138, 0.16) 0%, rgba(92, 34, 48, 0.12) 100%);
+    /* Light hover */
+    @apply -translate-y-0.5 shadow-[0_12px_32px_rgba(0,0,0,0.12),0_4px_12px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] bg-linear-to-br from-AO3-white/95 to-AO3-rose/10 dark:shadow-[0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.15)] dark:bg-linear-to-br dark:from-AO3-magenta/16 dark:to-AO3-maroon/12 border-AO3-magenta/20;
   }
 
-  .pagination-links a:hover svg {
-    color: var(--sl-color-accent-high);
-    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--sl-color-accent) 50%, transparent));
-    transform: scale(1.1);
+  .pagination-links a[rel="next"]:hover svg {
+    @apply text-AO3-magenta drop-shadow-[0_0_10px_rgba(233,79,138,0.5)] scale-110;
   }
 
-  .pagination-links a:hover .link-title {
-    background-image: linear-gradient(135deg, var(--color-AO3-dusk), var(--color-AO3-magenta));
+  .pagination-links a[rel="prev"]:hover svg {
+    @apply text-AO3-magenta drop-shadow-[0_0_10px_rgba(233,79,138,0.5)] scale-110;
+  }
+=
+  .pagination-links a:focus-visible {
+    @apply outline-2 outline-offset-2 ring-4 ring-AO3-magenta shadow-[0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08)];
+    outline-color: var(--color-AO3-magenta);
+  }
+}
+.pagination-links a .link-title :hover {
+    @apply m-0 text-base font-semibold leading-[1.3] bg-clip-text transition-all duration-300 text-AO3-magenta/10 bg-linear-[135] from-AO3-dusk to-AO3-magenta;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
-  .pagination-links a:focus-visible {
-    @apply outline-2 outline-offset-2 shadow-[0_0_0_4px_color-mix(in_srgb,var(--color-AO3-magenta)_20%,transparent),0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08)];
-    outline-color: var(--color-AO3-magenta);
-  }
-}
 
 @media (max-width: 640px) {
   .pagination-links {
@@ -85,7 +82,7 @@
   }
 
   .pagination-links a[rel="next"] {
-    @apply justify-start text-left;
+    @apply justify-start text-left flex-row;
   }
 
   .pagination-links a[rel="next"] > span {
@@ -97,15 +94,7 @@
   }
 }
 
-:root[data-theme='light'] .pagination-links a {
-  @apply border-AO3-maroon/15 bg-gradient-to-br from-AO3-white/90 to-AO3-silver/80 text-AO3-dark-maroon shadow-[0_4px_16px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.80)];
-}
 
-:root[data-theme='light'] .pagination-links a:hover {
-  @apply shadow-[0_12px_32px_rgba(0,0,0,0.12),0_4px_12px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)];
-  border-color: color-mix(in srgb, var(--color-AO3-magenta) 20%, transparent);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
-}
 
 @media (prefers-contrast: high) {
   .pagination-links a {
@@ -116,7 +105,7 @@
   }
 
   .pagination-links a:hover {
-    border-color: var(--sl-color-accent);
+    @apply border-AO3-magenta;
   }
 
   .pagination-links a .link-title {

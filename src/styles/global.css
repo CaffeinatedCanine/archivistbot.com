@@ -86,15 +86,15 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-@layer base {
-  /* Remove borders from major shell regions */
-  header,
-  .content-panel,
-  .right-sidebar,
-  .starlight__sidebar,
-  site-search button {
-    @apply border-0 border-s-0;
-  }
+@layer overrides {
+	/* Remove borders from major shell regions (must be top-level for global effect) */
+	header,
+	.content-panel,
+	.right-sidebar,
+	.starlight__sidebar,
+	site-search button {
+		@apply border-0! border-s-0!;
+	}
 
   /* Base text styles */
   p,
@@ -133,8 +133,8 @@
     @apply font-medium;
   }
 
-  a {
-    @apply text-AO3-magenta hover:text-AO3-dusk;
+  .sl-markdown-content a {
+    @apply text-AO3-magenta hover:text-AO3-dusk hover:no-underline;
   }
 
   /* Header */
@@ -149,6 +149,10 @@
   kbd {
     @apply bg-transparent;
   }
+
+	a[rel*="me"] {
+		@apply hover:text-AO3-magenta;
+	}
 }
 
 @layer components {
@@ -180,7 +184,7 @@
 
   /* Sidebar and details links */
   details ul li a:not(.file, .directory) {
-    @apply hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full;
+    @apply hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full hover:text-AO3-magenta;
   }
 
   details ul li:not(.file, .directory) {
@@ -255,7 +259,7 @@
   }
 
   .right-sidebar-panel a {
-    @apply text-(--sl-color-text) hover:text-(--sl-color-text) text-base! hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full w-3/4 pl-3;
+    @apply text-(--sl-color-text) text-base! hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full w-3/4 pl-3 hover:text-AO3-magenta;
   }
 
   .right-sidebar-panel a[aria-current="true"] {
