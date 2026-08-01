@@ -1,13 +1,36 @@
 ---
 title: Series Embeds
-description: A reference page in my new Starlight docs site.
+description:
+  Learn how Archivist auto-generates AO3 series embeds in Discord, showing
+  series title, authors, status, work count, total words, bookmarks, notes, and
+  summaries for richer fanfic sharing.
 sidebar:
   order: 3
 ---
 
-Reference pages are ideal for outlining how things work in terse and clear terms.
-Less concerned with telling a story or addressing a specific use case, they should give a comprehensive outline of what you're documenting.
+When Archivist sees an AO3 series link in a Discord message, a series embed will
+appear automatically. Series embeds provide information about a series inside of
+a Discord embed without you going to AO3!
 
-## Further reading
+## Included information
 
-- Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
+- Series name - shows series name with link to series
+- Author(s) — list of authors with links to their profiles
+- Started — date series started
+- Updated — most recent update date
+- Status — whether the work is "Complete" or "In progress"
+- Works — number of works in the series
+- Total Words — the total word count of all the works
+- Bookmarks — number of bookmarks on the series
+- Notes — any series notes
+- Description — the series description
+
+The series embed is split into pages when the notes and summary are long. This
+lets you see all the content with a small embed.
+
+If you did not post the link, the pages appear in a temporary message only you
+can see. This lets each person control their own copy of the embed.
+
+Series embeds can be changed by using the [settings](/commands/settings)
+command. You can choose where they post with the [redirect](/commands/redirect)
+command.

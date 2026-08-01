@@ -5,7 +5,7 @@ description:
   request or delete it.
 ---
 
-**Last updated:** July 12, 2026
+**Last updated:** July 31, 2026
 
 This Privacy Policy describes Our policies and procedures on the collection,
 use, and disclosure of Your information when You use the Service, and tells You
@@ -16,6 +16,15 @@ You long term. What small amount of data is collected will never be sold for any
 purpose and would only be provided to a third party if required by law. Only the
 data required to perform the Bot's functions or to troubleshoot issues is
 collected.
+
+<details>
+<summary>Plain Language Summary: Opening and Definitions</summary>
+
+Archivist keeps only the data needed to run the bot and fix problems. This block
+defines words like Bot, Developer, Personal Data, Usage Data, Website, and Host
+so the rest of the policy is easier to understand.
+
+</details>
 
 ## Interpretation and Definitions
 
@@ -50,6 +59,19 @@ For the purposes of this Privacy Policy:
 
 ## Collecting and Using Your Personal Data
 
+<details>
+<summary>Plain Language Summary: What Data We Collect and How We Use It</summary>
+
+Archivist stores server IDs to keep server-specific settings working. When you
+use `/suggest`, the bot posts the suggestion publicly on GitHub as an Issue. The
+archivistbot.com website host may also record your IP address and page request
+details.
+
+Only the Developer can access the bot’s stored data for server settings. The bot
+does not keep membership lists or embed text from Discord.
+
+</details>
+
 ### Types of Data Collected
 
 Usage and Personal Data is collected automatically when using the Service. The
@@ -59,28 +81,14 @@ Bot collects the following information for several different entities:
 
 The Bot stores the guild ("server") ID of all servers which invite the Bot in a
 MySQL/MariaDB database. This ID is used only to provide the server with
-server-specific settings, such as customizing the embed information displayed
-for fanfics.
+server-specific settings and rules for AO3 links.
+
+The Bot does not store the text of embed messages or the content of embeds shown
+in Discord.
 
 No information concerning which users are members of a server ("membership
 data") is collected or accessed at any point, as it isn't needed for the Bot's
 functions.
-
-**Embed Refresh Data**
-
-To support per-user pagination on embeds shown to multiple people in a server,
-the Bot stores a small amount of data needed to regenerate an embed after its
-cache expires — such as the AO3 work, series, or chapter being displayed and the
-pagination state of the embed. This allows each user viewing a shared embed to
-page through it independently using their own private controls, and allows an
-embed to be "refreshed" instead of becoming permanently unusable once its cache
-expires.
-
-This data is scoped to the server the embed was posted in, but — unlike other
-Guild/Server data described below — is retained independently of server settings
-for a limited grace period after the Bot leaves a server (see "How to Delete
-Your Data" for details), so that active embeds aren't broken by an accidental
-removal.
 
 **Feature Suggestions**
 
@@ -101,6 +109,17 @@ about Netlify's privacy practices [here](https://www.netlify.com/privacy/).
 
 ## Use of and Access to Your Personal Data
 
+<details>
+<summary>Plain Language Summary: How We Use and Share Your Data</summary>
+
+Archivist uses collected data to run the bot and check how it is being used. The
+bot does not share your data unless you consent or use the `/suggest` feature.
+
+Only the Developer can access the bot’s stored data. No outside support staff
+has access to it.
+
+</details>
+
 The Bot may use Personal Data for the following purposes:
 
 - **To provide and maintain our Service**, including to perform analysis on
@@ -119,15 +138,27 @@ Developer who can access Your information.
 
 ## Retention of Your Personal Data
 
+<details>
+<summary>Plain Language Summary: Retention, Transfer, and Disclosure</summary>
+
+Archivist keeps your data only as long as it is needed for the bot to work or as
+required by law. Website data can be stored by Netlify and other services in
+other countries, so it may cross borders.
+
+The Developer may disclose your information if required by legal requests or to
+protect the bot and its users. The bot tries to keep data safe, but no internet
+storage method is completely secure.
+
+The bot is not intended for children under 13. If the Developer learns a child’s
+data was collected without parental consent, they will remove that information
+from the hosted systems.
+
+</details>
+
 The Developer will retain Your Personal Data only for as long as is necessary
 for the purposes set out in this Privacy Policy. We will retain and use Your
 Personal Data to the extent necessary to comply with Our legal obligations (for
 example, if We are required to retain your data to comply with applicable laws).
-
-Embed refresh data (described above) is specifically retained for up to 30 days
-after the Bot is removed from a server, as described below under "How to Delete
-Your Data," to protect against accidental removal breaking already-posted
-embeds.
 
 ## Transfer of Your Personal Data
 
@@ -190,6 +221,14 @@ Discord's [Privacy Policy](https://discord.com/privacy) contains instructions.
 
 ## Links to Other Websites
 
+<details>
+<summary>Plain Language Summary: Links to Other Websites</summary>
+
+Archivist may link you to other websites. Those sites are not controlled by the
+Developer, so you should read their privacy policies before you use them.
+
+</details>
+
 Our Service may contain links to other websites that are not operated by Us. If
 You click on a third-party link, You will be directed to that third party's
 site. We strongly advise You to review the Privacy Policy of every site You
@@ -199,6 +238,21 @@ We have no control over, and assume no responsibility for, the content, privacy
 policies, or practices of any third-party sites or services.
 
 ## How to Request Your Data
+
+<details>
+<summary>Plain Language Summary: Requesting and Deleting Your Data</summary>
+
+Server owners can ask for the server settings and rules Archivist keeps. The bot
+does not log embed request messages, so it cannot provide data tied to a
+specific embed.
+
+To ask for your server's data, join the support server and contact the
+Developer. Data requests may be fulfilled by DM with a file transfer.
+
+If you want to delete server data, remove Archivist from the server. To ask
+about deleting a GitHub suggestion, use the support server.
+
+</details>
 
 Since no message data is logged and there is no information concerning the User
 an embed was requested by, the Developer is unable to provide copies of specific
@@ -216,26 +270,12 @@ fulfilled. To make a request for a copy of the server information:
 
 **Guild/Server**
 
-Server settings, redirect rules, and embed configuration are deleted
-automatically and immediately when the Bot is kicked from a server. This means
-no data concerning these aspects of Your Server (including the Server ID or the
-settings You've chosen) remains in the Bot's database once the Bot is removed.
-
-**Embed Refresh Data**
-
-Data used to support refreshing and re-paginating embeds (see "Embed Refresh
-Data" above) is **not** deleted immediately when the Bot is kicked. Instead, it
-is retained for up to 30 days after removal, so that if the Bot is re-invited
-shortly after an accidental kick, embeds that were already posted in Your server
-continue to function rather than becoming permanently unusable. If the Bot is
-not re-invited within 30 days, this data is permanently deleted. If the Bot is
-re-invited within that window, existing embeds regain full functionality
-automatically.
+Server settings and redirect rules are deleted automatically and immediately
+when the Bot is kicked from a server. This means no settings data remains in the
+Bot's database once the Bot is removed.
 
 The Bot automatically rebuilds default settings for Your server as long as the
-Bot is present, so there is no way to feasibly delete settings information while
-the Bot remains in Your server — removing the Bot, as described above, is the
-way to initiate deletion.
+Bot is present, so removing the Bot is the way to initiate deletion.
 
 **Feature Suggestions**
 
@@ -244,6 +284,18 @@ and are subject to GitHub's own data retention practices; deletion requests for
 a specific suggestion can be made by joining the support server.
 
 ## Changes to This Privacy Policy
+
+<details>
+<summary>Plain Language Summary: Policy Changes and Contact</summary>
+
+Archivist may update this Privacy Policy by posting the new policy here and
+notifying the support server. The date at the top will be updated when the
+policy changes.
+
+If you have questions or want support, email admin@enigmalea.quest or join the
+support server.
+
+</details>
 
 We may update Our Privacy Policy from time to time. We will notify You of any
 changes by posting the new Privacy Policy on this page.

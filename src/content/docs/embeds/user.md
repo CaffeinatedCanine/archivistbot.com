@@ -1,13 +1,35 @@
 ---
 title: User Embeds
-description: A reference page in my new Starlight docs site.
+description:
+  Learn how Archivist auto-generates AO3 user embeds in Discord, showing
+  usernames, profile icons, pseuds, works, series, bookmarks, and account
+  details for faster fanfic discovery.
 sidebar:
   order: 4
 ---
 
-Reference pages are ideal for outlining how things work in terse and clear terms.
-Less concerned with telling a story or addressing a specific use case, they should give a comprehensive outline of what you're documenting.
+When you share an AO3 user link in Discord, Archivist shows a user embed
+automatically. The embed gives you profile details from AO3 so you do not need
+to leave Discord.
 
-## Further reading
+## Included information
 
-- Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
+- Username — the user's name, with a link to their profile
+- Icon — the user's icon, if they have one
+- Pseuds — any pseudonyms the user has
+- Joined — the date the user created their AO3 account
+- Works — how many works the user has, with links to the pages
+- Series — how many series the user has, with links to the pages
+- Collections — how many collections the user has, with links to the pages
+- Bookmarks — how many bookmarks the user has, with links to the pages
+- Gifts — how many gifts the user has, with links to the pages
+- Profile — any profile text the user has written
+
+If the profile is too long, Archivist splits it across pages. This keeps the
+embed small and easy to read.
+
+If you did not post the link, the pages appear in a temporary message only you
+can see. That way each person can control their own copy of the embed.
+
+User embed looks can be changed using the
+[settings](/commands/settings) command. You can make all user embeds post to the same channel with the [redirect](/commands/redirect).

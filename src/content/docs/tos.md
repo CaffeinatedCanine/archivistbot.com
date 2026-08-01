@@ -5,7 +5,7 @@ description:
   in Discord communities.
 ---
 
-**Last updated:** July 12, 2026
+**Last updated:** July 31, 2026
 
 Please read these Terms of Service ("Terms") carefully before using Archivist
 ("the Bot"). By adding the Bot to a Discord server, or by otherwise interacting
@@ -14,6 +14,16 @@ use the Bot.
 
 These Terms should be read alongside Our [Privacy Policy](/privacy-policy),
 which describes what data the Bot collects and how it's used.
+
+<details>
+<summary>Plain Language Summary: Opening, Definitions, Description of Service, and Eligibility</summary>
+
+Archivist shows public AO3 content inside Discord. It only displays the data it
+gets from AO3 and does not keep or own that content. By using the Bot, you agree
+to these Terms. The Bot must follow Discord's rules and age limits, so if you do
+not meet those requirements, you may not use the Bot.
+
+</details>
 
 ## Definitions
 
@@ -48,6 +58,17 @@ You may not use the Bot.
 
 ## Content Notice
 
+<details>
+<summary>Plain Language Summary: Content Notice</summary>
+
+AO3 includes a wide range of fanfiction, including Mature and Explicit works.
+Archivist shows the metadata from those works when a link or command is used.
+The Developer does not review or approve any individual story. Server owners and
+admins should set up channels and permissions to keep content appropriate for
+their members.
+
+</details>
+
 AO3 hosts fan-created content across the full range of Archive Warnings and
 ratings, including works rated **Mature** and **Explicit**, and content covering
 dark or sensitive themes. The Bot displays whatever content a work's metadata
@@ -61,6 +82,15 @@ settings appropriately** for the content their members may encounter through the
 Bot, consistent with Discord's own policies on age-restricted content.
 
 ## Acceptable Use
+
+<details>
+<summary>Plain Language Summary: Acceptable Use</summary>
+
+Do not use Archivist to break Discord or AO3 rules. Do not spam, abuse limits,
+or try to overload the bot or AO3. Do not use the bot to attack, copy, or sell
+the software in a way that is not allowed.
+
+</details>
 
 You agree not to use the Bot to:
 
@@ -92,6 +122,16 @@ notice, for violating these Terms.
 
 ## Third-Party Content and Intellectual Property
 
+<details>
+<summary>Plain Language Summary: Third-Party Content and Intellectual Property</summary>
+
+Stories and series on AO3 belong to their original authors. Archivist only shows
+this content in Discord and does not own it. The bot's own code and name belong
+to the Developer. The bot is available under a special license and may change to
+Apache 2.0 on the future license date.
+
+</details>
+
 Fanfiction content displayed by the Bot belongs to its original authors on AO3
 and is subject to AO3's own [Terms of Service](https://archiveofourown.org/tos).
 The Bot does not claim any ownership or rights over this content, and the
@@ -108,6 +148,16 @@ self-hosting and managed-hosting use. The source code will convert to the Apache
 License, Version 2.0 on the Change Date specified in that file.
 
 ## No Warranty
+
+<details>
+<summary>Plain Language Summary: Risk, Responsibility, and Legal Limits</summary>
+
+Archivist is provided as-is, and we do not promise it will always work. We are
+not responsible for problems caused by the bot, Discord, AO3, or other services.
+If you misuse the bot or break these Terms, you may need to cover costs or legal
+claims that result.
+
+</details>
 
 The Bot is provided **"as is"** and **"as available"**, without warranties of
 any kind, whether express or implied, including but not limited to warranties of
@@ -132,6 +182,16 @@ including reasonable attorneys' fees, arising out of Your use of the Bot, Your
 violation of these Terms, or Your violation of any rights of a third party.
 
 ## Termination
+
+<details>
+<summary>Plain Language Summary: Ending Service, Changes, and Legal Rules</summary>
+
+We can stop your access to the bot at any time. You can stop using the bot by
+removing it from your server. We may change these Terms, and if you keep using
+the bot after that, you accept the new terms. Virginia law applies to these
+Terms. You can contact us by email or through the support server.
+
+</details>
 
 We may suspend or terminate Your access to the Bot, or remove the Bot from a
 Server, at any time, for any reason, including violation of these Terms, without

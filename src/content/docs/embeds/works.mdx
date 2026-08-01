@@ -1,0 +1,64 @@
+---
+title: Works Embeds
+description:
+  Learn how Archivist bot creates rich AO3 work embeds in Discord, including
+  stats, tags, summaries, and gallery previews for fanfiction links.
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Archivist creates a work embed when it detects an AO3 work link in chat. The
+embed shows important work details inside Discord so you can review the fanfic
+quickly.
+
+## Included information
+
+- Work title — title of the work with a link
+- Author(s) — links to author profiles
+- Series — name and link if the work is in a series
+- Words — total word count
+- Chapters — posted chapters and total chapters (for example, 5/10)
+- Language — work language
+- Published — original publication date
+- Updated — latest update date
+- Status — "Complete" or "In progress"
+- Rating — content rating shown by the sidebar color and by an icon
+- Warnings — AO3 warnings that apply
+- Category — relationship category tags (for example, M/M)
+- Fandoms — fandom tags
+- Relationships — relationship tags
+- Characters — character tags
+- Additional tags — other tags
+- Summary — the work summary text
+- Gallery — a separate image gallery for work images
+
+The works embed and gallery embed are split into pages when they are long. This
+keeps each embed small and easy to read. Use the page buttons to open a
+specific section, or use the `Previous` and `Next` buttons to move in order.
+
+The table below shows what content appears on each page.
+
+| Page    | What is shown                                                                                |
+| ------- | -------------------------------------------------------------------------------------------- |
+| Stats   | title, authors, series, words, chapters, language, dates, status, rating, warnings, category |
+| Tags    | fandoms, relationships, characters, additional tags                                          |
+| Summary | work summary text                                                                            |
+| Gallery | work images                                                                                  |
+
+If someone else posted the link, your pages appear in a private temporary
+message. This gives every user their own copy of the embed.
+
+Use [settings](/commands/settings) to show less information in work embeds. Use
+[redirect](/commands/redirect) to choose where work embeds appear.
+
+<Aside type="tip" icon="seti:favicon">
+  To stop Discord from creating a link preview, put `<` before and `>` after your link.
+
+    **Example**
+    ```markdown
+    <https://archiveofourown.org/works/16876149>
+    ```
+
+</Aside>
