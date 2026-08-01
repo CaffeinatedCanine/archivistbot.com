@@ -78,22 +78,22 @@
 
 @media (min-width: 50rem) {
   .sl-link-button {
-  @apply text-base;
+    @apply text-base;
   }
 }
 
 @media (max-width: 50rem) {
   .sl-link-button {
-  @apply text-sm;
+    @apply text-sm;
   }
 
   .sl-link-button.primary,
   .sl-link-button.secondary {
-  @apply px-5 py-3.5;
+    @apply px-5 py-3.5;
   }
 
   .sl-link-button.minimal {
-  @apply px-3 py-2.5;
+    @apply px-3 py-2.5;
   }
 }
 
@@ -101,26 +101,26 @@
 
 @media (prefers-contrast: high) {
   .sl-link-button {
-  @apply backdrop-blur-none border-2;
+    @apply backdrop-blur-none border-2;
   }
 
   .sl-link-button.primary {
-  @apply bg-AO3-magenta border-AO3-magenta text-AO3-black;
+    @apply bg-AO3-magenta border-AO3-magenta text-AO3-black;
   }
 
   .sl-link-button.secondary {
-  @apply bg-transparent dark:border-AO3-cyan dark:text-AO3-cyan;
+    @apply bg-transparent dark:border-AO3-cyan dark:text-AO3-cyan;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .sl-link-button,
   .sl-link-button svg {
-  @apply transition-none;
+    @apply transition-none;
   }
 
   .sl-link-button:hover,
   .sl-link-button:hover svg {
-  @apply transform-none;
+    @apply transform-none;
   }
 }
