@@ -1,11 +1,11 @@
 # Archivist Bot Documentation
 
-This repository contains the documentation site for Archivist Bot, a Discord bot
-that creates rich AO3 embeds, handles fanfiction commands, and explains settings,
-privacy, and usage.
+This repository contains the documentation site that explains settings, privacy,
+and usage for Archivist, a Discord bot that creates rich AO3 metadata embeds
+and provides commands for interacting with AO3 inside of Discord.
 
-The site is built with Astro and the Starlight theme. Documentation pages live in
-`src/content/docs/` as Markdown and MDX files.
+The site is built with Astro and the Starlight theme. Documentation pages live
+in `src/content/docs/` as Markdown and MDX files.
 
 ## 🚀 Project Structure
 
@@ -35,13 +35,13 @@ Inside this project, you will find:
 
 Run these from the project root:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Install dependencies                             |
-| `npm run dev`             | Start local dev server at `localhost:4321`       |
-| `npm run build`           | Build the site to `./dist/`                      |
-| `npm run preview`         | Preview the built site locally                   |
-| `npm run astro -- --help` | Show Astro CLI help                              |
+| Command                   | Action                                     |
+| :------------------------ | :----------------------------------------- |
+| `npm install`             | Install dependencies                       |
+| `npm run dev`             | Start local dev server at `localhost:4321` |
+| `npm run build`           | Build the site to `./dist/`                |
+| `npm run preview`         | Preview the built site locally             |
+| `npm run astro -- --help` | Show Astro CLI help                        |
 
 ## 👀 More information
 
