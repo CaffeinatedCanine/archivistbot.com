@@ -1,0 +1,75 @@
+---
+title: General
+description:
+  Configure Archivist's Discord server settings for link embeds, AO3 outage
+  alerts, allowed ratings and warnings, and blocked tags.
+sidebar:
+  order: 2
+---
+
+import ImageCarousel from "../../../../components/ImageCarousel.astro";
+
+Use the **General** page in Archivist's `/settings` command to control link
+behavior and decide which Archive of Our Own (AO3) works can be posted in your
+Discord server. You need the Discord **Manage Server** permission to change
+these settings.
+
+## Open a general settings form
+
+On the General page, choose **Preferences**, **Ratings**, or **Restrictions** to
+open a form for that section. Change the options you want, then select
+**Submit** to save them or **Cancel** to close the form without submitting. Use
+**Reset General to defaults** to restore the General page settings.
+
+<ImageCarousel
+  folder="general"
+  label="Archivist general settings forms for preferences, ratings, and restrictions"
+/>
+
+## Preferences
+
+Preferences control how Archivist responds to links and where it posts AO3
+status alerts.
+
+- **Delete original message with link:** After Archivist posts its embed, delete
+  the user's entire message. This also removes any other text in that message.
+- **Use the original Archivist-style embed:** Show all enabled work details in
+  one embed instead of separating them into Stats, Tags, and Summary tabs.
+- **Post AO3 outage alerts:** Post a message when AO3's status changes, and post
+  again when service recovers. Select an **Outage alert channel** to choose
+  where alerts appear. You must enable this option for the channel setting to be
+  used.
+- **Ignore character:** Set a character that server members can put before an
+  AO3 link to prevent Archivist from making an embed. The default character is
+  `%`. For example:
+
+```
+%https://archiveofourown.org/users/enigmalea/profile
+```
+
+## Ratings
+
+Choose which AO3 ratings are allowed in the server. All ratings are enabled by
+default. Uncheck a rating to block links to works with that rating:
+
+- Not Rated
+- General Audiences
+- Teen And Up Audiences
+- Mature
+- Explicit
+
+## Restrictions
+
+Choose which AO3 Archive Warnings are allowed. All warnings are enabled by
+default. Uncheck a warning to block works marked with it:
+
+- Graphic Depictions Of Violence
+- Major Character Death
+- No Archive Warnings Apply
+- Rape/Non-Con
+- Underage Sex
+- Creator Chose Not To Use Archive Warnings
+
+You can also add **Blocked Additional Tags**. Enter tags separated by commas.
+Archivist blocks a work if it has a matching tag. For example, entering
+`Character Death, Non-Con` blocks works that have either matching tag.

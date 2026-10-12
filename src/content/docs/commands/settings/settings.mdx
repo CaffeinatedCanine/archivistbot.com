@@ -1,33 +1,65 @@
 ---
-title: Settings
+title: Settings Command
 description:
-  Learn about Archivist's settings command and the categories its been broken
-  into.
+  Learn how to use Archivist's /settings command to manage server preferences,
+  AO3 work and chapter embeds, series, and user profile displays.
 sidebar:
   order: 1
 ---
 
-import ImageCarousel from "../../../components/ImageCarousel.astro";
+import ImageCarousel from "../../../../components/ImageCarousel.astro";
 import { CardGrid, LinkCard } from "@astrojs/starlight/components";
 
-The new `/settings` command is the one-stop shop for both viewing and
-controlling all server settings. Anyone with `Manage Server` permissions can
-access this command to change settings for Archivist, so be careful what roles
-and people you give that permission to.
+Use the `/settings` command to view and change how Archivist works in your
+server. The command opens an interactive settings panel. You need the Discord
+`Manage Server` permission to use it and change settings.
 
-Settings have been broken into the five categories below. Visit each page to
-learn about the settings available in that category.
+The panel groups settings into five pages. These settings control what
+information Archivist shows for Archive of Our Own (AO3) works, chapters,
+series, and user profiles, as well as general server preferences.
 
 <ImageCarousel folder="settings" label="Settings examples" />
+
+## Navigate the settings panel
+
+- **Choose a page:** Use the menu below the panel to open General, Work,
+  Chapter, Series, or User Profile.
+- **Move between pages:** Select **Previous** or **Next** to move to the page
+  before or after the one you are viewing.
+- **Select a section:** Select a section button, such as **Stats**, **Tags**,
+  or **Inactivity**, to open a form for those settings. The available
+  buttons depend on the page.
+- **Restore defaults:** Use the red reset button to restore the current page's
+  settings to their default values.
+
+## Settings pages
+
+Choose a page to learn what its settings do:
 
 <CardGrid>
   <LinkCard
     title="General"
-    href=""
-    description="Link response settings, subscribe to AO3 outage alerts, block ratings, warnings or specific tags."
+    href="/commands/settings/general/"
+    description="Set link responses, AO3 outage alerts, ratings, warnings, and blocked tags."
   />
-  <LinkCard title="Work" href="" description="Work embed settings." />
-  <LinkCard title="Chapter" href="" description="Chapter embed settings." />
-  <LinkCard title="Series" href="" description="Series embed settings." />
-  <LinkCard title="User Profile" href="" description="User embed settings." />
+  <LinkCard
+    title="Work"
+    href="/commands/settings/work/"
+    description="Choose the work details, tags, summary, gallery, and inactivity options shown in work embeds."
+  />
+  <LinkCard
+    title="Chapter"
+    href="/commands/settings/chapter/"
+    description="Choose the details and tags shown in chapter embeds, and control chapter thumbnails."
+  />
+  <LinkCard
+    title="Series"
+    href="/commands/settings/series/"
+    description="Choose the series details shown in series embeds and set inactivity behavior."
+  />
+  <LinkCard
+    title="User Profile"
+    href="/commands/settings/user/"
+    description="Choose which profile details, works, collections, bookmarks, and other items are shown."
+  />
 </CardGrid>
