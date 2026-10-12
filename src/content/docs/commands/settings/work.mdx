@@ -1,0 +1,86 @@
+---
+title: Work Embed Settings
+description:
+  Learn how to configure Archivist's AO3 work embeds in Discord, including
+  visible stats, tags, summary length, image galleries, and inactivity settings.
+sidebar:
+  order: 3
+---
+
+import ImageCarousel from "../../../../components/ImageCarousel.astro";
+
+Use the **Work** page in Archivist's `/settings` command to control which
+details appear in Archive of Our Own (AO3) work embeds in your Discord server.
+You need the Discord **Manage Server** permission to change these settings.
+
+## Open a work settings form
+
+On the Work page, choose **Stats**, **Tags**, **Summary**, **Gallery**, or
+**Inactivity** to open that section's form. Update the options, then select
+**Submit** to save your changes or **Cancel** to close the form without
+submitting. Select **Reset Work to defaults** to restore the Work settings.
+
+<ImageCarousel
+  folder="work-settings"
+  label="Archivist work settings forms for stats, tags, summary, gallery, and inactivity."
+/>
+
+## Stats
+
+Choose which work details appear in the Stats section of the embed. Uncheck a
+field to hide it:
+
+- **Words:** Total word count.
+- **Chapters:** Published chapter count and total chapter count.
+- **Language:** The work's language.
+- **Published:** When the work was first posted.
+- **Updated:** When the work was last updated.
+- **Status:** Whether the work is complete or in progress.
+- **Rating:** The AO3 content rating, such as Mature or Explicit.
+- **Warnings:** The work's Archive Warnings, if any.
+- **Category:** The relationship category, such as F/M, M/M, or Gen.
+
+## Tags
+
+Choose which tag groups appear in the embed. Uncheck a group to hide it:
+
+- **Fandoms:** Fandoms the work belongs to.
+- **Relationships:** Tagged relationships.
+- **Characters:** Tagged characters featured in the work.
+- **Additional Tags:** Freeform tags added by the author.
+
+Set a maximum length for **Fandoms**, **Relationships**, **Characters**, and
+**Additional Tags** separately. Each limit can be from 1 to 1,024 characters.
+Text over the limit is shortened with an ellipsis (`...`). The **Characters**
+and **Additional Tags** length fields are also available even though they are
+not visible in the tags screenshot.
+
+## Summary
+
+The Summary option adds a Summary tab that describes the work. Uncheck it to
+hide the summary. You can set the maximum summary length from 1 to 10,000
+characters. Longer summaries are shortened with an ellipsis (`...`). The default
+maximum is 3,000 characters.
+
+## Gallery
+
+For AO3 works with images, Archivist can show the images in a separate,
+paginated gallery alongside the main embed.
+
+- **Show image gallery:** Turn the gallery on or off.
+- **NSFW warning for Mature works:** Add a warning-only first page before the
+  images for Mature-rated works. Users can click through to view the gallery.
+- **NSFW warning for Explicit works:** Add a warning-only first page before the
+  images for Explicit-rated works. Users can click through to view the gallery.
+
+Both warning options are enabled by default.
+
+## Inactivity
+
+After five minutes without clicks, a work embed or gallery is considered
+inactive. Choose what Archivist does after this period:
+
+- **Reset gallery to page 1 after inactivity:** Return the image gallery to its
+  first page. This option is enabled by default.
+- **Default tab after 5 min inactivity:** Choose which tab the main embed shows
+  after five minutes: **Stats**, **Tags**, **Summary**, or **Don't reset**.
