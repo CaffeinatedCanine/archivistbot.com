@@ -27,8 +27,8 @@ Archivist remembers server settings such as:
   images
 - which details to show in series embeds, like author names, work count, and
   series summary
-- which details to show in user embeds, like pseudonyms, join date, works, and
-  bookmarks
+- which details to show in user profile embeds, like pseudonyms, join date,
+  works, and bookmarks
 - tag words that the server wants Archivist to block
 - redirect rules that send certain AO3 links to specific channels, forums, or
   threads

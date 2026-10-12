@@ -11,27 +11,27 @@ export default defineConfig({
     starlight({
       plugins: [starlightThemeNova(/* options */)],
       title: "Archivist",
-			components: {
-				Footer: './src/components/Footer.astro',
-				SocialIcons: './src/components/Socials.astro',
-			},
+      components: {
+        Footer: "./src/components/Footer.astro",
+        SocialIcons: "./src/components/Socials.astro",
+      },
       social: [
-				{
-					icon: "discord",
-					label: "support server",
-					href: "https://discord.gg/FzhC9bVFva"
-				},
-				{
-					icon: "email",
-					label: "email",
-					href: "mailto:botarchivist@gmail.com"
-				},
-				{
+        {
+          icon: "discord",
+          label: "support server",
+          href: "https://discord.gg/FzhC9bVFva",
+        },
+        {
+          icon: "email",
+          label: "email",
+          href: "mailto:botarchivist@gmail.com",
+        },
+        {
           icon: "pencil",
           label: "blog",
           href: "/blog",
         },
-				{
+        {
           icon: "blueSky",
           label: "BlueSky",
           href: "https://bsky.app/profile/archivistbot.bsky.social",
@@ -40,19 +40,32 @@ export default defineConfig({
       sidebar: [
         {
           label: "Guides",
-          items: [
-            { label: "Example Guide", slug: "guides/example" },
-          ],
+          items: [{ label: "Example Guide", slug: "guides/example" }],
         },
         {
           label: "Embeds",
           items: [{ autogenerate: { directory: "embeds" } }],
         },
-				{
+        {
           label: "Commands",
-          items: [{ autogenerate: { directory: "commands" } }],
+          items: [
+            { label: "AO3 Related", slug: "commands/ao3" },
+						{ label: "Redirect", slug: "commands/redirect" },
+            {
+              label: "Settings System",
+              items: [
+                "commands/settings/settings",
+                "commands/settings/general",
+                "commands/settings/work",
+								"commands/settings/chapter",
+								"commands/settings/series",
+								"commands/settings/user",
+              ],
+							collapsed: true,
+            },
+          ],
         },
-				{
+        {
           label: "Behind the Stacks",
           items: [{ autogenerate: { directory: "technical" } }],
         },
