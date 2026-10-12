@@ -1,0 +1,33 @@
+---
+title: Settings
+description:
+  Learn about Archivist's settings command and the categories its been broken
+  into.
+sidebar:
+  order: 1
+---
+
+import ImageCarousel from "../../../components/ImageCarousel.astro";
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+
+The new `/settings` command is the one-stop shop for both viewing and
+controlling all server settings. Anyone with `Manage Server` permissions can
+access this command to change settings for Archivist, so be careful what roles
+and people you give that permission to.
+
+Settings have been broken into the five categories below. Visit each page to
+learn about the settings available in that category.
+
+<ImageCarousel folder="settings" label="Settings examples" />
+
+<CardGrid>
+  <LinkCard
+    title="General"
+    href=""
+    description="Link response settings, subscribe to AO3 outage alerts, block ratings, warnings or specific tags."
+  />
+  <LinkCard title="Work" href="" description="Work embed settings." />
+  <LinkCard title="Chapter" href="" description="Chapter embed settings." />
+  <LinkCard title="Series" href="" description="Series embed settings." />
+  <LinkCard title="User Profile" href="" description="User embed settings." />
+</CardGrid>
