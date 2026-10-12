@@ -24,7 +24,7 @@ export default defineConfig({
 				{
 					icon: "email",
 					label: "email",
-					href: "mailto:archivistbot@gmail.com"
+					href: "mailto:botarchivist@gmail.com"
 				},
 				{
           icon: "pencil",
@@ -34,7 +34,7 @@ export default defineConfig({
 				{
           icon: "blueSky",
           label: "BlueSky",
-          href: "https://bsky.app/profile/yourhandle",
+          href: "https://bsky.app/profile/archivistbot.bsky.social",
         },
       ],
       sidebar: [
