@@ -55,7 +55,7 @@ const btn =
         data-track
         tabindex="0"
         class="flex list-none! m-0! p-0! overflow-x-auto snap-x snap-mandatory scroll-smooth rounded-lg
-               bg-AO3-gray dark:bg-AO3-wine [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+               bg-AO3-gray dark:bg-AO3-wine scrollbar-none [&::-webkit-scrollbar]:hidden
                focus-visible:outline-2 focus-visible:outline-AO3-teal dark:focus-visible:outline-AO3-cyan"
       >
         {slides.map((slide, i) => (
@@ -72,7 +72,7 @@ const btn =
   height={slide.src.height}
   loading={i === 0 ? "eager" : "lazy"}
   style={`max-width: min(100%, ${slide.src.width}px);`}
-  class="m-0! w-auto! h-auto! max-h-[32rem] object-contain"
+  class="m-0! w-auto! h-auto! max-h-128 object-contain"
 />
           </li>
         ))}
