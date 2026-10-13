@@ -42,8 +42,8 @@ For the purposes of this Privacy Policy:
 - **Application** means the Discord application invited to any server you own or
   are a member of, named Archivist.
 - **Bot** (referred to as "the Bot" in this Agreement) refers to Archivist.
-- **Developer** ("We", "Us" or "Our" in this Agreement) refers to Discord users
-  `enigmalea` and `FoxInBoots`.
+- **Developer** ("We", "Us" or "Our" in this Agreement) refers to _Caffeinated
+  Canine_, the developer team of Discord users `enigmalea` and `FoxInBoots`.
 - **Host** is [PebbleHost](https://pebblehost.com).
 - **Personal Data** is any information that relates to an identified or
   identifiable individual.
@@ -292,7 +292,7 @@ Archivist may update this Privacy Policy by posting the new policy here and
 notifying the support server. The date at the top will be updated when the
 policy changes.
 
-If you have questions or want support, email admin@enigmalea.quest or join the
+If you have questions or want support, email botarchivist@gmail.com or join the
 support server.
 
 </details>
@@ -310,5 +310,5 @@ Changes to this Privacy Policy are effective when they are posted on this page.
 ## Contact Us
 
 If You have any questions about this Privacy Policy, You can contact us via
-email at **admin@enigmalea.quest**, or join the
+email at **botarchivist@gmail.com**, or join the
 [support server](https://discord.gg/FzhC9bVFva) to ask any questions.

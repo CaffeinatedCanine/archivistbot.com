@@ -28,8 +28,8 @@ not meet those requirements, you may not use the Bot.
 ## Definitions
 
 - **Bot** refers to Archivist, the Discord application described in these Terms.
-- **Developer** ("We", "Us", "Our") refers to Discord users `enigmalea` and
-  `FoxInBoots`.
+- **Developer** ("We", "Us", "Our") refers to _Caffeinated Canine_, the
+  development team of Discord users `enigmalea` and `FoxInBoots`.
 - **Service** refers to the functionality provided by the Bot, including but not
   limited to retrieving and displaying content from AO3 within Discord.
 - **Server** or **Guild** means a Discord server the Bot has been added to.
@@ -217,5 +217,5 @@ law provisions.
 ## Contact Us
 
 If You have any questions about these Terms, You can contact us via email at
-**admin@enigmalea.quest**, or join the
+**botarchivist@gmail.com**, or join the
 [support server](https://discord.gg/FzhC9bVFva) to ask any questions.
