@@ -10,24 +10,29 @@
  * stylesheet outside JSX.
  * ============================ */
 
-.sl-link-button {
+.sl-link-button,
+.hero a {
   @apply inline-flex items-center justify-center gap-2 font-sans leading-none no-underline cursor-pointer relative overflow-hidden border border-transparent rounded-lg backdrop-blur transition-[transform,box-shadow,background] duration-150 ease-out;
 }
 
 /* ---------- Primary: warm AO3 gradient, the "human" CTA ---------- */
 
-.sl-link-button.primary {
+.sl-link-button.primary,
+.hero a {
   @apply px-6 py-4 text-white! bg-linear-135 from-AO3-magenta to-AO3-dusk shadow-[0_4px_16px_var(--tw-shadow-color)] shadow-AO3-magenta/30;
 }
-.sl-link-button.primary::before {
+.sl-link-button.primary::before,
+.hero a::before {
   @apply content-[''] absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent;
 }
 
-.sl-link-button.primary:hover {
+.sl-link-button.primary:hover,
+.hero a:hover {
   @apply -translate-y-px shadow-[0_8px_24px_var(--tw-shadow-color)] shadow-AO3-magenta/40;
 }
 
-.sl-link-button.primary:hover::before {
+.sl-link-button.primary:hover::before,
+.hero a:hover::before {
   @apply h-0.5 via-white/60;
 }
 
