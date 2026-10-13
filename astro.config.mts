@@ -38,10 +38,7 @@ export default defineConfig({
         },
       ],
       sidebar: [
-        {
-          label: "Guides",
-          items: [{ label: "Example Guide", slug: "guides/example" }],
-        },
+				{ slug: 'guides/example' },
         {
           label: "Embeds",
           items: [{ autogenerate: { directory: "embeds" } }],
