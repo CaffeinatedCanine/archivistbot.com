@@ -1,22 +1,24 @@
 ---
 title: Example Guide
 description: A guide in my new Starlight docs site.
+draft: true
 ---
 
-import { Badge } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
-import { Code } from 'starlight-theme-nova/components';
-import { FileTree } from '@astrojs/starlight/components';
-import { LinkButton } from '@astrojs/starlight/components';
-import { Steps } from '@astrojs/starlight/components';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Badge } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components";
+import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
+import { Code } from "starlight-theme-nova/components";
+import { FileTree } from "@astrojs/starlight/components";
+import { LinkButton } from "@astrojs/starlight/components";
+import { Steps } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 This is a guide to all the styles. **Strong.** _Emphasis._ `Inline Code`.
 
 ## Lists (Heading 2)
 
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis
+  framework
   - A subitem
 - Another item
 
@@ -46,13 +48,18 @@ This is a guide to all the styles. **Strong.** _Emphasis._ `Inline Code`.
 
 ## Asides
 
-<Aside>Some content in an aside. <a href="https://example.com">link</a></Aside>
+<Aside>
+  Some content in an aside. <a href="https://example.com">link</a>
+</Aside>
 
-<Aside type="caution">Some cautionary content. <a href="https://example.com">link</a></Aside>
+<Aside type="caution">
+  Some cautionary content. <a href="https://example.com">link</a>
+</Aside>
 
 <Aside type="tip">
 
-Other content is also supported in asides. <a href="https://example.com">link</a>
+Other content is also supported in asides.
+<a href="https://example.com">link</a>
 
 ```js
 // A code snippet, for example.
@@ -60,7 +67,9 @@ Other content is also supported in asides. <a href="https://example.com">link</a
 
 </Aside>
 
-<Aside type="danger">Do not give your password to anyone. <a href="https://example.com">link</a></Aside>
+<Aside type="danger">
+  Do not give your password to anyone. <a href="https://example.com">link</a>
+</Aside>
 
 ## Cards
 
@@ -81,6 +90,7 @@ Other content is also supported in asides. <a href="https://example.com">link</a
 </CardGrid>
 
 ## Code
+
 export const exampleCode=`import { defineCollection } from 'astro:content';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
@@ -89,8 +99,7 @@ export const collections = {
 	docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
 };`
 
-export const exampleShell=`docker exec -it seafile bash`
-
+export const exampleShell = `docker exec -it seafile bash`;
 
 <Code code={exampleCode} lang="ts" title="content.config.ts" />
 
@@ -111,12 +120,13 @@ export const exampleShell=`docker exec -it seafile bash`
 </FileTree>
 
 ## Steps
+
 <Steps>
 
 1. Import the component into your MDX file:
 
    ```js
-   import { Steps } from '@astrojs/starlight/components';
+   import { Steps } from "@astrojs/starlight/components";
    ```
 
 2. Wrap `<Steps>` around your ordered list items.
@@ -133,3 +143,37 @@ export const exampleShell=`docker exec -it seafile bash`
     Io, Europa, Ganymede
   </TabItem>
 </Tabs>
+
+## Blockquote
+
+> This is a blockquote.
+
+## Summary and Details
+
+<details>
+  <summary>A Strange Case</summary>
+  MR. UTTERSON, THE LAWYER, was a man of a rugged countenance, that was never
+  lighted by a smile; cold, scanty and embarrassed in discourse; backward in
+  sentiment; lean, long, dusty, dreary, and yet somehow lovable. At friendly
+  meetings, and when the wine was to his taste, something eminently human
+  beaconed from his eye; something indeed which never found its way into his
+  talk, but which spoke not only in these silent symbols of the after-dinner
+  face, but more often and loudly in the acts of his life. He was austere with
+  himself; drank gin when he was alone, to mortify a taste for vintages; and
+  though he enjoyed the theater, had not crossed the doors of one for twenty
+  years. But he had an approved tolerance for others; sometimes wondering,
+  almost with envy, at the high pressure of spirits involved in their misdeeds;
+  and in any extremity inclined to help rather than to reprove. “I incline to
+  Cain’s heresy,” he used to say, quaintly; “I let my brother go to the devil in
+  his own way.” In this character it was frequently his fortune to be the last
+  reputable acquaintance and the last good influence in the lives of down-going
+  men. And to such as these, so long as they came about his chambers, he never
+  marked a shade of change in his demeanor.
+</details>
+
+## Defined Terms
+
+<dl>
+  <dt>Defined Term</dt>
+  <dd>Here is the definition of the thing above.</dd>
+</dl>

@@ -9,6 +9,7 @@
 @import "./cards.css" layer(theme);
 @import "./code.css" layer(theme);
 @import "./filetree.css" layer(theme);
+@import "./pagination.css" layer(theme);
 @import "./steps.css" layer(theme);
 @import "./tabs.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
@@ -17,6 +18,7 @@
 @import "@fontsource-variable/comfortaa";
 @import "@fontsource-variable/space-grotesk";
 @import "@fontsource-variable/jetbrains-mono";
+
 @theme {
   --font-sans: "Atkinson Hyperlegible Next", sans;
   --font-mono: "Jetbrains Mono", mono;
@@ -24,7 +26,7 @@
   --font-heading: "Space Grotesk", sans;
   --color-AO3-black: #15090c;
   --color-AO3-wine: #240d13;
-	--color-AO3-danger: #ef4444;
+  --color-AO3-danger: #ef4444;
   --color-AO3-dark-card: #341520;
   --color-AO3-dark-maroon: #6e2334;
   --color-AO3-maroon: #5c2230;
@@ -56,6 +58,7 @@
   --sl-color-black: var(--color-AO3-wine);
   --sl-color-bg-nav: var(--color-AO3-maroon);
 }
+
 :root[data-theme="light"] {
   --sl-color-bg: var(--color-AO3-white);
   --sl-color-text: var(--color-AO3-dark-maroon);
@@ -83,159 +86,204 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-/* ANNIHILATE ALL BORDERS */
-header,
-.content-panel,
-.right-sidebar,
-.starlight__sidebar,
-site-search button {
-  @apply border-0 border-s-0;
+@layer overrides {
+	/* Remove borders from major shell regions (must be top-level for global effect) */
+	header,
+	.content-panel,
+	.right-sidebar,
+	.starlight__sidebar,
+	site-search button {
+		@apply border-0! border-s-0!;
+	}
+
+  /* Base text styles */
+  p,
+  li {
+    @apply text-lg;
+  }
+
+  em,
+  i {
+    @apply italic text-AO3-teal dark:text-AO3-cyan;
+  }
+
+  strong,
+  b {
+    @apply font-semibold text-AO3-magenta;
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  h1,
+  h2 {
+    @apply font-bold text-(--sl-color-text);
+  }
+
+  h3,
+  h4,
+  h5 {
+    @apply font-medium;
+  }
+
+  .sl-markdown-content a {
+    @apply text-AO3-magenta hover:text-AO3-dusk hover:no-underline;
+  }
+
+  /* Header */
+  header {
+    @apply bg-(--sl-color-bg-nav)/50 text-(--sl-color-text) backdrop-blur-3xl;
+  }
+
+  site-search button {
+    @apply rounded-full bg-(--sl-color-bg) hover:bg-AO3-muted-dark-text dark:hover:bg-AO3-muted-light-text;
+  }
+
+  kbd {
+    @apply bg-transparent;
+  }
+
+	a[rel*="me"] {
+		@apply hover:text-AO3-magenta;
+	}
 }
 
-/* BASE TEXT STYLES */
-/* TODO: Style blockquote. */
-p,
-li {
-  @apply text-lg;
+@layer components {
+  /* Blockquotes */
+  .content-panel blockquote {
+    @apply border-l-4 border-AO3-magenta bg-AO3-magenta/10 rounded-r-lg px-4 py-2 my-4 italic text-AO3-muted-light-text dark:text-AO3-muted-dark-text;
+  }
+
+  .content-panel blockquote p {
+    @apply m-0;
+  }
+
+  /* Details and summaries */
+  .content-panel details:not(.directory details) {
+    @apply border-l-2 border-AO3-muted-dark-text dark:border-AO3-maroon pl-4 my-4 transition-[border-color] duration-200;
+  }
+
+  .content-panel details:not(.directory details)[open] {
+    @apply border-AO3-magenta;
+  }
+
+  .content-panel summary:not(.directory details summary) {
+    @apply text-AO3-magenta font-semibold cursor-pointer list-none flex items-center gap-2 before:inline-block before:text-AO3-teal before:dark:text-AO3-cyan before:font-semibold before:text-lg before:transition-transform before:duration-200;
+
+    &::before {
+      content: '›';
+    }
+  }
+
+  /* Sidebar and details links */
+  details ul li a:not(.file, .directory) {
+    @apply hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full hover:text-AO3-magenta;
+  }
+
+  details ul li:not(.file, .directory) {
+    @apply border-s-2 border-s-AO3-muted-dark-text dark:border-s-AO3-maroon;
+  }
+
+  /* Hide default disclosure triangle */
+  .content-panel summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Definition lists */
+  .content-panel dl {
+    @apply shadow-card dark:shadow-card-dark bg-AO3-black/5 dark:bg-AO3-white/5 rounded-lg p-4 my-4;
+  }
+
+  .content-panel dt {
+    @apply text-AO3-magenta dark:text-AO3-magenta font-semibold mt-3 font-mono;
+  }
+
+  .content-panel dd {
+    @apply border-l-2 border-AO3-maroon/40 pl-3 ml-2 text-AO3-muted-light-text dark:text-AO3-muted-dark-text;
+  }
+
+  /* Lists */
+  .content-panel ul li,
+  .content-panel ul ul li {
+    @apply list-none! pl-4;
+  }
+
+  .content-panel ul li:not(.file, .directory, .tab) {
+    @apply relative pl-[1.1em] mb-1 before:absolute before:left-0 before:text-[1.1em] before:leading-none before:font-semibold before:text-AO3-magenta;
+
+    &::before {
+      content: '›';
+    }
+  }
+
+  .content-panel ul ul li:not(.file, .directory, .tab) {
+    @apply before:text-AO3-teal before:dark:text-AO3-cyan;
+
+    &::before {
+      content: '›';
+    }
+  }
+
+  .content-panel ol:not(.sl-steps) li {
+    @apply list-none! pl-0;
+  }
+
+  .content-panel ol:not(.sl-steps) li {
+    counter-increment: ol-counter;
+    @apply relative pl-8 mb-[5px];
+  }
+
+  .content-panel ol:not(.sl-steps) li::before {
+    content: counter(ol-counter);
+    @apply absolute left-0 font-mono font-medium text-[0.82em] text-AO3-magenta top-[0.35em] min-w-[1.4em] text-right;
+  }
+
+  /* Active navigation */
+  [aria-current="page"] {
+    @apply bg-AO3-magenta! text-AO3-gray! dark:text-AO3-wine! rounded-full;
+  }
+
+  .starlight-toc {
+    @apply mr-4 mt-4;
+  }
+
+  .right-sidebar-panel h2 {
+    @apply text-AO3-magenta text-xl font-normal;
+  }
+
+  .right-sidebar-panel a {
+    @apply text-(--sl-color-text) text-base! hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full w-3/4 pl-3 hover:text-AO3-magenta;
+  }
+
+  .right-sidebar-panel a[aria-current="true"] {
+    @apply text-AO3-magenta!;
+  }
+
+  li:has(a[aria-current="true"]) {
+    @apply border-l-2 border-AO3-muted-dark-text! dark:border-AO3-maroon!;
+  }
+
+  /* Buttons */
+  .sl-link-button {
+    @apply rounded-full transition-all duration-200 ease-in-out;
+  }
+
+  .sl-link-button .primary {
+    @apply bg-AO3-magenta! text-white! border-none! hover:bg-AO3-dusk! hover:shadow-glow-magenta!;
+  }
+
+  .sl-link-button .secondary {
+    @apply border border-AO3-maroon dark:bg-AO3-dark-card dark:text-AO3-silver hover:border-AO3-magenta hover:shadow-glow-magenta bg-AO3-light-card text-AO3-dark-maroon;
+  }
+
+  .sl-link-button .minimal {
+    @apply bg-transparent text-AO3-magenta border-none hover:bg-AO3-magenta/10 hover:shadow-glow-magenta;
+  }
 }
-
-em,
-i {
-  @apply italic text-AO3-teal dark:text-AO3-cyan;
-}
-
-strong,
-b {
-  @apply font-semibold text-AO3-magenta;
-}
-
-/* Headers */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-heading;
-}
-
-h1,
-h2 {
-  @apply font-bold text-(--sl-color-text);
-}
-
-h3,
-h4,
-h5 {
-  @apply font-medium;
-}
-
-/* Lists */
-.content-panel ul li:not(> starlight-file-tree),
-.content-panel ul ul li:not(> starlight-file-tree) {
-  @apply list-none! pl-4;
-}
-
-.content-panel ul li:not(> starlight-file-tree) {
-  @apply relative pl-[1.1em] mb-1;
-}
-
-.content-panel ul li::before:not(> starlight-file-tree) {
-  content: "›";
-  @apply absolute left-0 text-[1.1em] leading-none font-semibold text-AO3-magenta;
-}
-
-.content-panel ul ul li::before:not(> starlight-file-tree) {
-  @apply text-AO3-teal dark:text-AO3-cyan;
-}
-
-.sl-markdown-content ol:not(.sl-steps) li {
-  @apply list-none! pl-0;
-}
-
-.sl-markdown-content ol:not(.sl-steps) li {
-  counter-increment: ol-counter;
-  @apply relative pl-8 mb-[5px];
-}
-
-.sl-markdown-content ol:not(.sl-steps) li::before {
-  content: counter(ol-counter);
-  @apply absolute left-0 font-mono font-medium text-[0.82em] text-AO3-magenta top-[0.35em] min-w-[1.4em] text-right;
-}
-
-/* LINK STYLES */
-a {
-  @apply text-AO3-magenta hover:text-AO3-dusk;
-}
-
-details ul li a {
-  @apply hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full;
-}
-
-[aria-current="page"] {
-  @apply bg-AO3-magenta! text-AO3-gray! dark:text-AO3-wine! rounded-full;
-}
-
-details ul li:not(.file, .directory) {
-  @apply border-s-2 border-s-AO3-muted-dark-text dark:border-s-AO3-maroon;
-}
-
-/* HEADER STYLES */
-header {
-  @apply bg-(--sl-color-bg-nav)/50 text-(--sl-color-text) backdrop-blur-3xl;
-}
-
-site-search button {
-  @apply rounded-full bg-(--sl-color-bg) hover:bg-AO3-muted-dark-text dark:hover:bg-AO3-muted-light-text;
-}
-
-kbd {
-  @apply bg-transparent;
-}
-
-/* TABLE OF CONTENTS */
-.starlight-toc {
-  @apply mr-4 mt-4;
-}
-
-.right-sidebar-panel h2 {
-  @apply text-AO3-magenta text-xl font-normal;
-}
-
-.right-sidebar-panel a {
-  @apply text-(--sl-color-text) hover:text-(--sl-color-text) text-base! hover:bg-AO3-light-card dark:hover:bg-AO3-dark-card rounded-full w-3/4 pl-3;
-}
-
-.right-sidebar-panel a[aria-current="true"] {
-  @apply text-AO3-magenta!;
-}
-
-li:has(a[aria-current="true"]) {
-  @apply border-l-2 border-AO3-muted-dark-text! dark:border-AO3-maroon!;
-}
-
-/* BUTTONS */
-/* === SHARED PILL BASE === */
-.sl-link-button {
-  @apply rounded-full transition-all duration-200 ease-in-out;
-}
-
-/* === PRIMARY === */
-.sl-link-button .primary {
-  @apply bg-AO3-magenta! text-white! border-none! hover:bg-AO3-dusk! hover:shadow-glow-magenta!;
-}
-
-/* === SECONDARY === */
-.sl-link-button .secondary {
-  @apply border border-AO3-maroon dark:bg-AO3-dark-card dark:text-AO3-silver hover:border-AO3-magenta hover:shadow-glow-magenta
- bg-AO3-light-card text-AO3-dark-maroon;
-}
-
-/* === MINIMAL === */
-.sl-link-button .minimal {
-  @apply bg-transparent text-AO3-magenta border-none hover:bg-AO3-magenta/10 hover:shadow-glow-magenta;
-}
-
-/* TODO: Style summary, details, dl, dt, and dd. */
-
-/* TODO: Style pagination. */

@@ -1,0 +1,64 @@
+---
+title: AO3 Related
+description:
+  Learn how Archivist Discord bot shows AO3 work stats, embeds, and downloads
+  with author links, ratings, chapters, kudos, bookmarks, and export options for
+  fanfiction readers.
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import ImageCarousel from "../../../components/ImageCarousel.astro";
+
+## Stats
+
+<ImageCarousel folder="stats" label="Stats embed examples" />
+
+The `/stats` command shows AO3 work statistics in a Discord embed:
+
+- Work title — link to the work
+- Authors — names with profile links
+- Series — link if the work is in a series
+- Rating — content rating shown by the sidebar color and by an icon
+- Language — work language
+- Category — relationship tags
+- Published — original publication date
+- Updated — latest update date
+- Status — "Complete" or "In progress"
+- Chapters — published chapters and total chapters (for example, 5/10)
+- Words — total word count
+- Hits — view count
+- Kudos — number of kudos
+- Bookmarks — number of bookmarks
+- Comments — number of comments
+
+<Aside type="note" name="Note: Important">
+  Stats data stays in the [cache](/technical/cache) for 1 hour, so `/stats`
+  results refresh at most once per hour.
+</Aside>
+
+## Download
+
+The `/download` command gives you the same AO3 download files without leaving
+Discord. It links directly to AO3’s download options in azw2, epub, html, mobi,
+and PDF.
+
+<Aside type="note" name="Note: Important">
+  If you download works, please visit AO3 to leave comments and kudos for the
+  author.
+</Aside>
+
+<ImageCarousel folder="download" label="Download embed examples" />
+
+## List
+
+The `/list` command shows works from a series with each title and rating. Every
+title links to the work.
+
+If a series has more than 10 works, Archivist divides the result into pages.
+Each page has up to 10 links so the embed stays short and easy to read. Use the
+dropdown or the `Previous` and `Next` buttons to move between pages.
+
+If someone else used the command, the list appears in a private temporary
+message for you, so everyone can control their own copy.

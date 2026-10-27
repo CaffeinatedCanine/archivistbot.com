@@ -11,7 +11,7 @@
 .card {
   @apply relative overflow-hidden block no-underline
   rounded-2xl border p-7
-  bg-linear-135 from-AO3-light-card/95 to-AO3-light-card/85
+  bg-linear-135 from-AO3-light-card/95 to-AO3-light-card/55
   border-black/8 text-(--sl-color-gray-3)
   shadow-card
   dark:from-AO3-dark-card/92 dark:to-AO3-dark-card/82
@@ -53,13 +53,13 @@
 
 article.card .icon {
   @apply flex items-center justify-center w-8 h-8
-  text-AO3-magenta bg-AO3-white! dark:bg-AO3-wine! rounded-lg! border-none!
+  text-AO3-magenta bg-AO3-light-card/50! dark:bg-AO3-dark-card/50! rounded-lg! border-none!
   drop-shadow-[0_0_6px_var(--tw-drop-shadow-color)] drop-shadow-AO3-magenta/15
   transition-[filter,background-color,transform] duration-250 ease-in-out;
 }
 
 article.card:hover .icon {
-  @apply scale-105 bg-AO3-silver! dark:bg-AO3-black!
+  @apply scale-105 bg-AO3-light-card/20! dark:bg-AO3-dark-card/20!
   drop-shadow-[0_0_10px_var(--tw-drop-shadow-color)] drop-shadow-AO3-magenta/25;
 }
 

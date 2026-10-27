@@ -1,0 +1,78 @@
+---
+title: AO3 Chapter Update Embed Settings
+description:
+  Learn how to customize Archivist's AO3 chapter update embeds in Discord,
+  including visible fields, tag length limits, summary and notes, thumbnails,
+  and inactivity settings.
+sidebar:
+  order: 4
+---
+
+import ImageCarousel from "../../../../components/ImageCarousel.astro";
+
+Use the **Chapter** page in Archivist's `/settings` command to choose what
+appears in Archive of Our Own (AO3) chapter embeds in your Discord server. You
+need the Discord **Manage Server** permission to change these settings.
+
+## Open a chapter settings form
+
+On the Chapter page, choose **Fields**, **Tags**, **Thumbnail**, or
+**Inactivity** to open that section's form. Change the options, then select
+**Submit** to save your changes or **Cancel** to close the form without
+submitting. Select **Reset Chapter to defaults** to restore the Chapter
+settings.
+
+<ImageCarousel
+  folder="chapter-settings"
+  label="Archivist Chapter settings forms for fields, tags, thumbnail display, and inactivity."
+/>
+
+## Visible chapter fields
+
+Choose which details appear in the chapter embed. Uncheck a field to hide it:
+
+- **Words:** The chapter's word count. The work's total word count appears in
+  brackets.
+- **Chapters:** The published chapter count and total chapter count.
+- **Rating:** The AO3 content rating, such as Mature or Explicit.
+- **Published:** When the work was first posted.
+- **Updated:** When the work was last updated.
+- **Status:** Whether the work is complete or in progress.
+- **Warnings:** The work's Archive Warnings, if any.
+- **Summary:** Adds a Summary tab with the chapter's summary. Long summaries are
+  split across pages.
+- **Notes:** Shows the chapter's beginning and end notes. If a Summary is
+  available, the notes are combined with it; otherwise, notes appear in their
+  own tab.
+
+## Chapter tags
+
+Choose which tag groups appear in the chapter embed. Uncheck a group to hide it:
+
+- **Fandoms:** Fandoms the work belongs to.
+- **Relationships:** Tagged relationships.
+- **Characters:** Tagged characters featured in the work.
+- **Additional Tags:** Freeform tags added by the author.
+
+Set a maximum length for each tag group separately: **Fandoms**,
+**Relationships**, **Characters**, and **Additional Tags**. Each limit can be
+from 1 to 1,024 characters. Text over the limit is shortened with an ellipsis
+(`...`). The Characters and Additional Tags limit fields are not visible in the
+screenshot, but are also available in the form.
+
+## Chapter thumbnails
+
+Choose whether a chapter embed includes a small thumbnail. Archivist uses the
+chapter's first embedded image.
+
+- **Show chapter thumbnail:** Show or hide the thumbnail.
+- **Hide thumbnail on Mature works:** Do not show thumbnails for chapters in
+  Mature-rated works.
+- **Hide thumbnail on Explicit works:** Do not show thumbnails for chapters in
+  Explicit-rated works.
+
+## Inactivity
+
+After five minutes without clicks, the chapter update embed is inactive. Use
+**Default tab after 5 min inactivity** to choose which tab the embed returns to:
+**Stats**, **Tags**, **Summary**, or **Don't reset**.

@@ -1,0 +1,58 @@
+---
+title: Cache
+description:
+  Learn how Archivist stores AO3 data to reduce repeated requests, with
+  different cache times for works and users and shard-specific memory.
+sidebar:
+  order: 1
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<dl>
+  <dt>Cache</dt>
+  <dd>saved data the bot keeps to use again</dd>
+</dl>
+
+Archivist saves AO3 data so it can reuse the same information without asking AO3
+again. This makes embeds faster and reduces repeat requests.
+
+## How caching works
+
+- Archivist stores original AO3 data.
+- If two embeds use the same data, such as work embeds and stats embeds,
+  Archivist can reuse it.
+
+## Cache times
+
+- Work, chapter, and series data are kept for 1 hour.
+- User data is kept for 3 hours.
+
+If you request the same work, chapter, or series within one hour, Archivist can
+use saved data. If you request the same user within three hours, Archivist can
+use saved user data.
+
+<Aside type="note" title="Note: Why user data is longer">
+  User profiles change less often than a work or series on AO3. Storing user
+  data longer helps reduce extra requests.
+</Aside>
+
+## Shard caches
+
+<dl>
+  <dt>Shard</dt>
+  <dd>a group of Discord servers that one copy of Archivist handles</dd>
+</dl>
+
+Archivist runs on multiple shards. Each shard has its own cache and serves its
+assigned Discord servers.
+
+A shard cannot use cache data from another shard. This means the same link may
+load from cache on one server but need a new AO3 request on another.
+
+## Why this matters
+
+- Reusing original values saves AO3 requests.
+- Work and series data refresh sooner than user data.
+- If your server is on a shard without the cached data, the same link may take
+  longer to respond.

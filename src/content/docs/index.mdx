@@ -1,50 +1,90 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Archivist Discord Bot Documentation
+description:
+  Learn how to use Archivist, a Discord bot for Archive of Our Own (AO3) links,
+  work embeds, commands, and server settings.
 hero:
-  title: |
-    Welcome to Starlight with
-    <span
-      class="font-black text-transparent
-        bg-clip-text bg-gradient-to-b
-        from-accent-700 to-accent-400
-        dark:from-accent-500 dark:to-accent-200"
-    >
-      Tailwind
-    </span>
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  title:
+    <span class= "font-black text-transparent bg-clip-text bg-linear-135 from-AO3-maroon to-AO3-magenta dark:from-white dark:to-AO3-magenta">Archivist for AO3 in Discord</span>
+  tagline:
+    Share Archive of Our Own works in Discord with useful previews, statistics,
+    tags, and more. Learn how to use and configure Archivist.
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Explore commands
+      link: /commands/ao3/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: Browse embed guides
+      link: /embeds/works/
+      icon: right-arrow
       variant: minimal
 tableOfContents: false
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Next steps
+Archivist helps your Discord community share and explore Archive of Our Own
+(AO3) works. When someone posts an AO3 link, Archivist can show work details
+such as the title, authors, rating, tags, and summary in a Discord embed. You
+can also use commands to check work statistics, download works, and browse
+series.
+
+## Find what you need
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="Use Archivist commands" icon="forward-slash">
+    Learn about `/stats`, `/download`, and `/list`, and find out how to use AO3
+    links with Archivist.
+
+    [Read the command guide](/commands/ao3/)
+
+  </Card>
+  <Card title="Understand AO3 embeds" icon="document">
+    See what information appears in work, chapter, series, and user profile
+    embeds, and how to navigate their pages.
+
+    [Browse embed guides](/embeds/works/)
+
+  </Card>
+  <Card title="Configure your server" icon="setting">
+    Choose which details Archivist shows, set link behavior, and control where
+    embeds are sent.
+
+    [Explore server settings](/commands/settings/settings/)
+
+  </Card>
+  <Card title="Route embeds" icon="external">
+    Send matching embeds to a chosen Discord channel, thread, or forum with
+    redirect rules.
+
+    [Learn about redirects](/commands/redirect/)
+
+  </Card>
+</CardGrid>
+
+## New to Archivist?
+
+Start with the [AO3 command guide](/commands/ao3/) to learn what you can do with
+Archivist. If you manage a Discord server, visit the
+[settings guide](/commands/settings/settings/) to customize embeds and other
+server preferences.
+
+Need help? Visit the [Archivist support server](https://discord.gg/FzhC9bVFva).
+
+## Botlists
+
+If Archivist makes your server better, a vote on either both list below, or a review on top.gg helps more fandom spaces find it. Thank you!
+
+<CardGrid>
+<Card>
+<center>
+<a href="https://top.gg/bot/812505952959856690">
+  <img src="https://top.gg/api/widget/812505952959856690.svg"/>
+</a>
+</center>
+</Card>
+<Card>
+<center>
+<a href="https://discordbotlist.com/bots/archivist"><img src="https://discordbotlist.com/api/v1/bots/812505952959856690/widget" /></a>
+</center>
+</Card>
 </CardGrid>

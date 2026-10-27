@@ -1,0 +1,129 @@
+@layer components {
+  .pagination-links {
+    @apply my-8 mb-6 grid grid-cols-2 gap-3 p-0 w-full;
+  }
+
+  .pagination-links a {
+    /* Light mode (default) styles */
+    @apply relative flex items-center gap-2 overflow-hidden rounded-xl border border-AO3-maroon/15 bg-linear-to-br from-AO3-white/90 to-AO3-silver/80 px-4 py-3 text-AO3-dark-maroon no-underline shadow-[0_4px_16px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.80)] backdrop-blur-xl transition-all duration-300 dark:border-AO3-magenta/20 dark:bg-linear-to-br dark:from-AO3-magenta/10 dark:to-AO3-maroon/10 dark:text-AO3-silver dark:shadow-[0_4px_16px_rgba(0,0,0,0.10),0_1px_4px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.10)];
+  }
+
+  .pagination-links a[rel="prev"] {
+    @apply justify-start text-left col-start-1 col-end-2 flex flex-row;
+  }
+
+  .pagination-links a[rel="next"] {
+    @apply justify-end text-right col-start-2 col-end-3 flex flex-row;
+  }
+
+  .pagination-links a svg {
+    @apply order-2 h-4 w-4 shrink-0 transition-all duration-300 text-AO3-teal drop-shadow-[0_0_6px_rgba(26,140,139,0.30)] dark:text-AO3-cyan dark:drop-shadow-[0_0_6px_rgba(61,219,217,0.30)];
+  }
+
+  .pagination-links a[rel="prev"] svg {
+    @apply order-1;
+  }
+
+  .pagination-links a[rel="next"] svg {
+    @apply order-2 ml-auto;
+  }
+
+  .pagination-links a > span {
+    @apply flex flex-1 flex-col gap-0.5 text-[0.8rem] font-medium leading-[1.2] opacity-80;
+  }
+
+  .pagination-links a[rel="prev"] > span {
+    @apply order-2 items-start text-left;
+  }
+
+  .pagination-links a[rel="next"] > span {
+    @apply order-1 items-end text-right mr-auto;
+  }
+
+  .pagination-links a .link-title {
+    @apply m-0 text-base font-semibold leading-[1.3] bg-linear-to-br from-AO3-magenta/10 dark:from-AO3-silver to-AO3-magenta bg-clip-text transition-all duration-300 text-AO3-magenta/10;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .pagination-links a:hover {
+    /* Light hover */
+    @apply -translate-y-0.5 shadow-[0_12px_32px_rgba(0,0,0,0.12),0_4px_12px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.90)] bg-linear-to-br from-AO3-white/95 to-AO3-rose/10 dark:shadow-[0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.15)] dark:bg-linear-to-br dark:from-AO3-magenta/16 dark:to-AO3-maroon/12 border-AO3-magenta/20;
+  }
+
+  .pagination-links a[rel="next"]:hover svg {
+    @apply text-AO3-magenta drop-shadow-[0_0_10px_rgba(233,79,138,0.5)] scale-110;
+  }
+
+  .pagination-links a[rel="prev"]:hover svg {
+    @apply text-AO3-magenta drop-shadow-[0_0_10px_rgba(233,79,138,0.5)] scale-110;
+  }
+
+  .pagination-links a:focus-visible {
+    @apply outline-2 outline-offset-2 ring-4 ring-AO3-magenta shadow-[0_12px_32px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.08)] outline-AO3-magenta;
+  }
+  .pagination-links a .link-title :hover {
+    @apply m-0 text-base font-semibold leading-[1.3] bg-clip-text transition-all duration-300 text-AO3-magenta/10 bg-linear-[135] from-AO3-dusk to-AO3-magenta;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media (max-width: 640px) {
+    .pagination-links {
+      @apply grid-cols-1 gap-3;
+    }
+
+    .pagination-links a {
+      @apply gap-2 px-4 py-3;
+    }
+
+    .pagination-links a[rel="next"] {
+      @apply justify-start text-left flex-row;
+    }
+
+    .pagination-links a[rel="next"] > span {
+      @apply order-2 mr-0 items-start text-left;
+    }
+
+    .pagination-links a[rel="next"] svg {
+      @apply order-1 ml-0;
+    }
+  }
+
+  @media (prefers-contrast: high) {
+    .pagination-links a {
+      border: 2px solid var(--sl-color-gray-4);
+      background: var(--sl-color-bg);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .pagination-links a:hover {
+      @apply border-AO3-magenta;
+    }
+
+    .pagination-links a .link-title {
+      background: none;
+      -webkit-text-fill-color: unset;
+      color: var(--sl-color-white);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pagination-links a,
+    .pagination-links a svg,
+    .pagination-links a .link-title {
+      @apply transition-none;
+    }
+
+    .pagination-links a:hover {
+      @apply transform-none;
+    }
+
+    .pagination-links a:hover svg {
+      @apply transform-none;
+    }
+  }
+}

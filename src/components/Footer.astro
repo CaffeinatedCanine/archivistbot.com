@@ -1,0 +1,182 @@
+---
+import EditLink from '@astrojs/starlight/components/EditLink.astro'
+import LastUpdated from '@astrojs/starlight/components/LastUpdated.astro';
+import Pagination from '@astrojs/starlight/components/Pagination.astro';
+import { Icon } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import { Tumblr } from 'simple-icons-astro';
+import archieImage from '../assets/archie-full.png';
+
+const year = new Date().getFullYear();
+
+const links = {
+  discord: "https://discord.gg/FzhC9bVFva",
+  invite: "https://discord.com/api/oauth2/authorize?client_id=812505952959856690&permissions=294205549632&scope=bot",
+  privacy: "/privacy-policy",
+  terms: "/tos",
+  bluesky: "https://bsky.app/profile/archivistbot.bsky.social",
+  tumblr: "https://botarchivist.tumblr.com",
+  blog: "/blog",
+};
+
+const socialLinks = [
+  { href: links.blog, title: 'blog', label: 'blog', icon: 'pencil', external: false },
+  { href: links.bluesky, title: 'BlueSky', label: 'BlueSky', icon: 'blueSky', external: true },
+  { href: links.tumblr, title: 'tumblr', label: 'tumblr', icon: 'tumblr', external: true },
+] as const;
+
+const footerLinks = [
+  { href: links.discord, label: 'Support Server', external: true },
+  { href: links.invite, label: 'Invite Archivist', external: true },
+  { href: links.privacy, label: 'Privacy Policy', external: false },
+  { href: links.terms, label: 'Terms of Service', external: false },
+] as const;
+---
+
+<div class="sl-flex">
+	<div class="meta sl-flex">
+		<EditLink />
+		<LastUpdated />
+	</div>
+	<Pagination />
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <!-- Left/center content -->
+    <div class="footer__content">
+
+      <!-- Archie face placeholder until full image is ready -->
+      <div class="footer__top">
+        <p class="footer__copyright">
+          © {year} Caffeinated Canine · Archivist Bot is not affiliated with the <a href="https://www.transformativeworks.org/">OTW</a> or <a href="http://archiveofourown.org">AO3</a>.
+				</p>
+			</div>
+      <nav class="footer__socials" aria-label="Social links">
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            title={link.title}
+            aria-label={link.label}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >
+            {link.icon === 'tumblr' ? (
+              <Tumblr class="text-[24px]" />
+            ) : (
+              <Icon name={link.icon} class="text-[24px]" />
+            )}
+          </a>
+        ))}
+      </nav>
+
+      <nav class="footer__links" aria-label="Footer links">
+        {footerLinks.map((link, index) => (
+          <>
+            <a
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+            >
+              {link.label}
+            </a>
+            {index < footerLinks.length - 1 && ' · '}
+          </>
+        ))}
+      </nav>
+			<div class="footer__bottom">
+        <p class="footer__attribution">
+          Built with <Icon name="astro" class="text-black dark:text-white text-sm inline align-bottom" /> <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> & <Icon name="starlight" class="text-yellow-500 dark:text-yellow-400 text-sm inline align-bottom" /> <a href="https://starlight.astro.build" target="_blank" rel="noopener noreferrer">Starlight</a>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Archie -->
+    <button
+      class="footer__archie"
+      aria-label="Suggest a feature"
+      title="Suggest a feature to Archie!"
+    >
+      <Image
+        src={archieImage}
+        alt="Archie the Archivist robot mascot"
+        class="footer__archie-img"
+      />
+    </button>
+
+  </div>
+</footer>
+
+<style>
+  @reference "tailwindcss";
+  @reference "../styles/global.css";
+
+  .footer {
+    @apply border-t border-AO3-muted-dark-text dark:border-AO3-maroon mt-auto;
+  }
+
+  .footer__inner {
+    @apply max-w-7xl mx-auto px-6 py-8
+      flex items-end justify-between
+      relative;
+  }
+
+  .footer__content {
+    @apply flex flex-col gap-1.5 p-4;
+  }
+
+  .footer__top {
+    @apply flex flex-wrap items-center gap-x-6 gap-y-2;
+  }
+
+  .footer__copyright {
+    @apply text-sm mx-auto my-0;
+  }
+
+  .footer__socials {
+    @apply flex items-center justify-center! gap-4 w-full;
+  }
+
+  .footer__socials a {
+    @apply text-lg text-AO3-magenta
+          hover:text-AO3-muted-light-text dark:hover:text-AO3-muted-dark-text
+          transition-colors duration-200 no-underline;
+  }
+
+  .footer__bottom {
+    @apply flex flex-wrap items-center w-full;
+  }
+
+  .footer__links {
+    @apply flex flex-wrap items-center gap-x-4 gap-y-1;
+  }
+
+  .footer__links a {
+    @apply text-sm text-AO3-muted-light-text dark:text-AO3-muted-dark-text
+          hover:text-AO3-magenta
+          transition-colors duration-200 no-underline;
+  }
+
+  .footer__attribution {
+    @apply text-sm text-AO3-dark-maroon/80 dark:text-AO3-silver/80 text-center w-full;
+  }
+
+  .footer__attribution a {
+    @apply text-AO3-muted-light-text dark:text-AO3-muted-dark-text
+          hover:text-AO3-magenta dark:hover:text-AO3-magenta
+          transition-colors duration-200 no-underline;
+  }
+
+  /* Archie sits at the bottom right, slightly overlapping the footer top edge */
+  .footer__archie {
+    @apply absolute bottom-5 right-20
+          bg-transparent border-none p-0 cursor-pointer
+          transition-transform duration-200
+          hover:-translate-y-1;
+  }
+
+  .footer__archie-img {
+    @apply h-40 w-auto object-contain object-bottom;
+  }
+</style>

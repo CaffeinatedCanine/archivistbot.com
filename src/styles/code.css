@@ -22,11 +22,11 @@ pre.astro-code {
 /* ---------- Layout fixes carried over from the original ---------- */
 
 .sl-markdown-content .astro-code .ec-line {
-  @apply [margin-block-start:initial]!;
+  @apply mbs-[initial]!;
 }
 
 .codeblock .astro-code figure.frame {
-  @apply [margin-block-start:initial]!;
+  @apply mbs-[initial]!;
 }
 
 pre.astro-code {
@@ -55,5 +55,9 @@ pre.astro-code {
 /* ---------- Code text ---------- */
 
 .astro-code code {
-  @apply font-mono! font-normal! box-border block w-full [font-feature-settings:"liga"_0,"calt"_0] text-base!;
+  @apply font-mono! font-normal! box-border block w-full font-features-["liga"_0,"calt"_0] text-base!;
+}
+
+div[data-nova-code-container] {
+	@apply border-0!;
 }

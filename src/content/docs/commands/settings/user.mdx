@@ -1,0 +1,56 @@
+---
+title: User Profile Embed Settings
+description:
+  Learn how to customize Archivist's AO3 user profile embeds in Discord,
+  including profile fields, bio length, and inactivity settings.
+sidebar:
+  order: 6
+---
+
+import ImageCarousel from "../../../../components/ImageCarousel.astro";
+
+Use the **User Profile** page in Archivist's `/settings` command to control
+which details appear in Archive of Our Own (AO3) user profile embeds in your
+Discord server. You need the Discord **Manage Server** permission to change
+these settings.
+
+## Open a user profile settings form
+
+On the User Profile page, choose **Fields** or **Inactivity** to open that
+section's form. Update the options, then select **Submit** to save your changes
+or **Cancel** to close the form without submitting. Select **Reset User Profile
+to defaults** to restore the User Profile settings.
+
+<ImageCarousel
+  folder="user-settings"
+  label="Archivist user profile settings forms for visible profile fields and inactivity behavior."
+/>
+
+## Profile fields
+
+Choose which details appear in the AO3 user profile embed. Uncheck a field to
+hide it:
+
+- **Pseuds:** The user's alternate AO3 names.
+- **Joined:** When the user joined AO3.
+- **Location:** The location listed on the user's profile, if provided.
+- **Birthday:** The birthday listed on the user's profile, if provided.
+- **Works:** A link to the user's works and the number of works.
+- **Series:** A link to the user's series and the number of series.
+- **Collections:** A link to the user's collections and the number of
+  collections.
+- **Bookmarks:** A link to the user's bookmarks and the number of bookmarks.
+- **Gifts:** A link to works gifted to the user and the number of gifts.
+- **Bio:** The user's AO3 profile bio. Long bios are split across pages.
+
+You can set the maximum length of the Bio from 1 to 20,000 characters. Text over
+the limit is shortened with an ellipsis (`...`). The default limit is 6,000
+characters. The Bio length setting is part of the Fields form, but is not shown
+in the screenshot.
+
+## Inactivity
+
+When a user profile embed has no clicks for five minutes, it becomes inactive.
+
+- **Reset to page 1 after inactivity:** Return the profile embed to its first
+  page after five minutes without clicks. This option is enabled by default.
