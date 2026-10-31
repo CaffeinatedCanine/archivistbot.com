@@ -9,8 +9,9 @@ export default defineConfig({
   site: "https://archivistbot.com",
   integrations: [
     starlight({
-      plugins: [starlightThemeNova(/* options */)],
+      plugins: [starlightThemeNova()],
       title: "Archivist",
+			logo: { src: "./src/assets/logo.png" },
       components: {
         Footer: "./src/components/Footer.astro",
         SocialIcons: "./src/components/Socials.astro",
@@ -46,6 +47,7 @@ export default defineConfig({
         {
           label: "Commands",
           items: [
+						{ label: "General", slug: "commands/general" },
             { label: "AO3 Related", slug: "commands/ao3" },
 						{ label: "Redirect", slug: "commands/redirect" },
             {

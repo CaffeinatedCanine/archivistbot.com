@@ -5,7 +5,7 @@ description:
   in Discord communities.
 ---
 
-**Last updated:** July 31, 2026
+**Last updated:** October 31, 2026
 
 Please read these Terms of Service ("Terms") carefully before using Archivist
 ("the Bot"). By adding the Bot to a Discord server, or by otherwise interacting
