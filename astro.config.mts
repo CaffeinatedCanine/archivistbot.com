@@ -39,7 +39,6 @@ export default defineConfig({
         },
       ],
       sidebar: [
-				{ slug: 'guides/example' },
         {
           label: "Embeds",
           items: [{ autogenerate: { directory: "embeds" } }],
