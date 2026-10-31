@@ -5,7 +5,7 @@ description:
   request or delete it.
 ---
 
-**Last updated:** July 31, 2026
+**Last updated:** October 31, 2026
 
 This Privacy Policy describes Our policies and procedures on the collection,
 use, and disclosure of Your information when You use the Service, and tells You
