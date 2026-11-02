@@ -1,11 +1,10 @@
-@layer components {
   .pagination-links {
-    @apply my-8 mb-6 grid grid-cols-2 gap-3 p-0 w-full;
+    @apply my-8 mb-6 flex flex-col md:grid md:grid-cols-2 gap-3 p-0 w-full;
   }
 
   .pagination-links a {
     /* Light mode (default) styles */
-    @apply relative flex items-center gap-2 overflow-hidden rounded-xl border border-AO3-maroon/15 bg-linear-to-br from-AO3-white/90 to-AO3-silver/80 px-4 py-3 text-AO3-dark-maroon no-underline shadow-[0_4px_16px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.80)] backdrop-blur-xl transition-all duration-300 dark:border-AO3-magenta/20 dark:bg-linear-to-br dark:from-AO3-magenta/10 dark:to-AO3-maroon/10 dark:text-AO3-silver dark:shadow-[0_4px_16px_rgba(0,0,0,0.10),0_1px_4px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.10)];
+    @apply relative flex md:flex-row items-center gap-2 overflow-hidden rounded-xl border border-AO3-maroon/15 bg-linear-to-br from-AO3-white/90 to-AO3-silver/80 px-4 py-3 text-AO3-dark-maroon no-underline shadow-[0_4px_16px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.80)] backdrop-blur-xl transition-all duration-300 dark:border-AO3-magenta/20 dark:bg-linear-to-br dark:from-AO3-magenta/10 dark:to-AO3-maroon/10 dark:text-AO3-silver dark:shadow-[0_4px_16px_rgba(0,0,0,0.10),0_1px_4px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.10)];
   }
 
   .pagination-links a[rel="prev"] {
@@ -70,28 +69,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  @media (max-width: 640px) {
-    .pagination-links {
-      @apply grid-cols-1 gap-3;
-    }
-
-    .pagination-links a {
-      @apply gap-2 px-4 py-3;
-    }
-
-    .pagination-links a[rel="next"] {
-      @apply justify-start text-left flex-row;
-    }
-
-    .pagination-links a[rel="next"] > span {
-      @apply order-2 mr-0 items-start text-left;
-    }
-
-    .pagination-links a[rel="next"] svg {
-      @apply order-1 ml-0;
-    }
-  }
-
   @media (prefers-contrast: high) {
     .pagination-links a {
       border: 2px solid var(--sl-color-gray-4);
@@ -126,4 +103,3 @@
       @apply transform-none;
     }
   }
-}
